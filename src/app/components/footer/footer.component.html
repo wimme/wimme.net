@@ -1,0 +1,8 @@
+<footer class="site-footer clear" role="contentinfo">
+    <ul *ngIf="(settings$ | async)?.socials as socials" class="social-icons">
+        <li *ngFor="let social of socials"><a href="javascript:;" [href]="social.url" target="_blank" [title]="social.name"><span class="genericon" [ngClass]="'genericon-' + social.name.toLowerCase()"></span></a></li>
+    </ul>
+    <div class="site-copyright">
+        <p>&copy; {{getCurrentYear()}} {{(settings$ | async)?.name}}. {{(settings$ | async)?.footer}}</p>
+    </div>
+</footer>

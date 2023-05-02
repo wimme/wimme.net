@@ -1,0 +1,24 @@
+<p class="lead" *ngIf="!success">Hieronder kunt u een bericht naar me versturen.</p>
+<p class="success" *ngIf="success"><strong>Success!</strong> Uw bericht werd verzonden. Ik contacteer u zo vlug mogelijk.</p>
+<form action="#" name="form" method="post" (ngSubmit)="onSubmit($event)" class="contact-form" *ngIf="!success" [formGroup]="contactForm">
+    <p class="error" *ngIf="error">{{error}}</p>
+    <p class="contact-form-author">
+        <input type="text" name="name" placeholder="Naam" formControlName="name" [class.error]="hasError('name')" required="required" />
+    </p>
+    <p class="contact-form-phone">
+        <input type="tel" name="telephone" placeholder="Telefoon" formControlName="telephone" [class.error]="hasError('telephone')" />
+    </p>
+    <p class="contact-form-email">
+        <input type="email" name="email" placeholder="Email" formControlName="email" [class.error]="hasError('email')" required="required" />
+    </p>
+    <p class="contact-form-message">
+        <textarea name="message" rows="4" placeholder="Bericht" formControlName="message" [class.error]="hasError('message')"></textarea>
+    </p>
+    <p class="contact-form-captcha">
+        <img src="https://cms.wimme.net/system/captcha.php" alt="" class="captcha" width="200" height="40"><br />
+        <input type="text" name="captcha" id="contact-captcha-input" placeholder="Typ de tekens uit de afbeelding" formControlName="captcha" [class.error]="hasError('captcha')" required="required" />
+    </p>
+    <p class="contact-form-submit">
+        <input type="submit" value="Verstuur" [disabled]="contactForm.invalid || submitting" />
+    </p>
+</form>

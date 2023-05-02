@@ -1,0 +1,6 @@
+<aside class="widget_recent_entries">
+    <h6 class="widget-title">Recente posts</h6>
+    <ul>
+        <li *ngFor="let one of recents$ | async"><a href="javascript:;" [routerLink]="['./' + one.url]" (click)="onClick(one)">{{one.title}}</a><span class="post-date">{{one.date * 1000 | date:'d MMM yyyy'}}</span></li>
+    </ul>
+</aside>

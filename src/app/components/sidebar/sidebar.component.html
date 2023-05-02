@@ -1,0 +1,9 @@
+<app-navigation class="sidebar-navigation"></app-navigation>
+
+<div class="menu-toggle" (click)="closeSidebar()" [class.toggled-on]="isSidebarOpen"><span></span></div>
+
+<div class="page-sidebar" role="complementary">
+    <app-categories class="widget"></app-categories>
+    <app-search class="widget"></app-search>
+    <app-recents class="widget"></app-recents>
+</div>

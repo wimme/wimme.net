@@ -1,0 +1,14 @@
+<aside class="widget_search">
+    <form role="search" method="get" class="search-form" action="/" (ngSubmit)="onSubmit($event)">
+        <label>
+            <span class="screen-reader-text">Zoeken op:</span>
+            <input type="search" class="search-field" placeholder="Zoeken &hellip;" value="" name="s" [formControl]="searchField" />
+        </label>
+        <input type="submit" class="search-submit" value="Search" />
+    </form>
+    <ng-container *ngIf="searchField.value && (results$ | async) as results">
+        <ul *ngIf="results.length">
+            <li *ngFor="let one of results"><a href="javascript:;" [routerLink]="'./' + one.url" (click)="onClick(one)">{{one.title}}</a><span class="post-date" *ngIf="one.date">{{one.date * 1000 | date:'d MMM yyyy'}}</span></li>
+        </ul>
+    </ng-container>
+</aside>

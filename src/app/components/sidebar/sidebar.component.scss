@@ -1,0 +1,10 @@
+.menu-toggle {
+	display: none;
+	top: 30px;
+}
+
+@media only screen and (max-width: 479px) {
+	.menu-toggle {
+		display: block;
+	}
+}
