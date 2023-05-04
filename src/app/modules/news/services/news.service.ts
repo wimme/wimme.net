@@ -42,6 +42,14 @@ export class NewsService {
         return this._sanitizer.bypassSecurityTrustHtml(html);
     }
 
+    public getSlug(title: string): string {
+        return title.toLowerCase()
+            .trim()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_-]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
     public getPinned(id: number, category?: number): Observable<News[]> {
         return this._apiService.get<News[]>('news', 'getpinned', { id, category });
     }

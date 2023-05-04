@@ -77,6 +77,10 @@ export class NewsListComponent implements OnInit, OnDestroy {
         return this._newsService.getHtml(content, contentType);
     }
 
+    public getSlug(title: string): string {
+        return this._newsService.getSlug(title);
+    }
+
     private _update(): void {
         this._newsSubscription?.unsubscribe();
         this._pinnedSubscription?.unsubscribe();

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { first, from, max, Subject, Subscription, switchMap, takeUntil } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first, from, Subject, Subscription, switchMap, takeUntil } from 'rxjs';
 import { SeoService } from '../../../../services/seo.service';
 import { WebsiteService } from '../../../../services/website.service';
 import { News } from '../../interfaces/news';
@@ -31,6 +31,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
 
     constructor(
         private _route: ActivatedRoute,
+        private _router: Router,
         private _changeDectector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService,
@@ -77,6 +78,10 @@ export class NewsItemComponent implements OnInit, OnDestroy {
         return this._newsService.getHtml(content, contentType);
     }
 
+    public getSlug(title: string): string {
+        return this._newsService.getSlug(title);
+    }
+
     private _update(): void {
         this._newsItemSubscription?.unsubscribe();
         this._nextSubscription?.unsubscribe();
@@ -87,7 +92,13 @@ export class NewsItemComponent implements OnInit, OnDestroy {
             this._newsItemSubscription = this._newsService.getNewsItem(this._id, this._newsId).subscribe(newsItem => {
                 this.newsItem = newsItem;
                 this._websiteService.setLoading(false);
-                this._seoService.update(newsItem.title, 'article', newsItem.content_preview, this.getImageUrl(newsItem.image));
+                if (newsItem) {
+                    const slug = this.getSlug(newsItem.title);
+                    if (slug !== this._route.snapshot.paramMap.get('slug')) {
+                        this._router.navigate(['item', this._newsId, slug], { replaceUrl: true });
+                    }
+                    this._seoService.update(newsItem.title, 'article', newsItem.content_preview, this.getImageUrl(newsItem.image));
+                }
                 this._changeDectector.markForCheck();
             });
 

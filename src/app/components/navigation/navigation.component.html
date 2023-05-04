@@ -1,7 +1,7 @@
 <nav role="navigation">
     <div class="menu-container">
         <ul class="menu">
-            <li *ngFor="let nav of navigation$ | async" class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:;" [routerLink]="['/' + nav.url]" (click)="onClick(nav)">{{nav.name}}</a></li>
+            <li *ngFor="let nav of navigation$ | async" class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:;" [routerLink]="[nav.url]" (click)="onClick(nav)">{{nav.name}}</a></li>
         </ul>
     </div>
 </nav>
