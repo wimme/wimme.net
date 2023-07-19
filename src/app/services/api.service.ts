@@ -17,7 +17,8 @@ export class ApiService {
     };
 
     public get<T>(module: string, action: string, params?: { [key: string]: unknown }): Observable<T> {
-        const api = isDevMode() ? '/system/json/' : 'https://cms.wimme.net/system/json/';
+        const host = window.location.hostname;
+        const api = isDevMode() ? '/system/json/' : `https://cms.${host}/system/json/`;
         const data = { module, action, params };
         return this._httpClient.post<T>(api, data, this._httpOptions).pipe(
             catchError(this._handleError<T>())

@@ -22,7 +22,8 @@ export class NewsService {
         if (responsiveMaxWidth && percentage && window.innerWidth > responsiveMaxWidth) {
             imageWidth = '&w=' + Math.ceil(window.innerWidth * percentage * 0.01 * window.devicePixelRatio);
         }
-        return url.replace('sites/cms.wimme.net/files/', 'https://img.wimme.net/') + '?vw=' + window.innerWidth + '&dpr=' + window.devicePixelRatio + imageWidth;
+        const host = window.location.hostname;
+        return url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`) + '?vw=' + window.innerWidth + '&dpr=' + window.devicePixelRatio + imageWidth;
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {
@@ -37,7 +38,12 @@ export class NewsService {
             html = this._markdownConverter.makeHtml(content);
         }
         if (html) {
-            html = html.replace(/(href|src)=("|')\/?sites\/cms\.wimme\.net\/files\/(\S+)("|')/gm, '$1=$2https://img.wimme.net/$3?vw=' + window.innerWidth + '&amp;dpr=' + window.devicePixelRatio + '$4');
+            const host = window.location.hostname;
+            const hostEscaped = host.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
+            const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|png|PNG|webp|WEBP)("|')`;
+            const regex = new RegExp(pattern, 'gm');
+            html = html.replace(regex, `$1=$2https://img.${host}/$3.$4?vw=` + window.innerWidth + '&amp;dpr=' + window.devicePixelRatio + '$5');
+            html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
 		}
         return this._sanitizer.bypassSecurityTrustHtml(html);
     }

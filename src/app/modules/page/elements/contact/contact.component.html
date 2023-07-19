@@ -15,7 +15,7 @@
         <textarea name="message" rows="4" placeholder="Bericht" formControlName="message" [class.error]="hasError('message')"></textarea>
     </p>
     <p class="contact-form-captcha">
-        <img src="https://cms.wimme.net/system/captcha.php" alt="" class="captcha" width="200" height="40"><br />
+        <img [src]="getCaptchaUrl()" alt="" class="captcha" width="200" height="40"><br />
         <input type="text" name="captcha" id="contact-captcha-input" placeholder="Typ de tekens uit de afbeelding" formControlName="captcha" [class.error]="hasError('captcha')" required="required" />
     </p>
     <p class="contact-form-submit">
