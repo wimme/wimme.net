@@ -40,7 +40,7 @@ DirectoryIndex index.php index.html
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
   # Proxy to backend:
-  RewriteRule ^feed/(.*)$ https://cms.wimme.net/feed/$1 [P]
+  #RewriteRule ^feed/(.*)$ https://cms.wimme.net/feed/$1 [P]
 
   # Redirection of requests to index.html
   RewriteCond %{REQUEST_FILENAME} !-f
