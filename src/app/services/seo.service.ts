@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from "@angular/platform-browser";
+import { LocationService } from './location.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class SeoService {
     constructor(
         private _titleService: Title,
         private _metaService: Meta,
+        private _locationService: LocationService,
         @Inject(DOCUMENT) private _document: Document) {
     }
 
@@ -129,8 +131,8 @@ export class SeoService {
     private _websiteSchema(name?: string, description?: string): Record<string, any> {
 		return {
 			'@type': 'WebSite',
-            '@id': `${window.location.origin}/#website`,
-			url: window.location.origin,
+            '@id': `${this._locationService.origin}/#website`,
+			url: this._locationService.origin,
 			name: name,
             description: description
 		};
@@ -139,10 +141,10 @@ export class SeoService {
     private _webpageSchema(title?: string, description?: string, image?: string): Record<string, any> {
         return {
 			'@type': 'WebPage',
-			url: window.location.href,
+			url: this._locationService.href,
 			name: title || this._siteName,
             isPartOf: {
-                '@id': `${window.location.origin}/#website`
+                '@id': `${this._locationService.origin}/#website`
             },
             description: description,
             thumbnailUrl: image

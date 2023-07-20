@@ -1,6 +1,7 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { LocationService } from './location.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +9,8 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class ApiService {
 
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _locationService: LocationService
     ) { }
 
     private readonly _httpOptions = {
@@ -17,7 +19,7 @@ export class ApiService {
     };
 
     public get<T>(module: string, action: string, params?: { [key: string]: unknown }): Observable<T> {
-        const host = window.location.hostname;
+        const host = this._locationService.hostname;
         const api = isDevMode() ? '/system/json/' : `https://cms.${host}/system/json/`;
         const data = { module, action, params };
         return this._httpClient.post<T>(api, data, this._httpOptions).pipe(

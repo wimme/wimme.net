@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first, from, Subject, Subscription, switchMap, takeUntil } from 'rxjs';
+import { LocationService } from '../../../../services/location.service';
 import { SeoService } from '../../../../services/seo.service';
 import { WebsiteService } from '../../../../services/website.service';
 import { News } from '../../interfaces/news';
@@ -35,7 +36,8 @@ export class NewsItemComponent implements OnInit, OnDestroy {
         private _changeDectector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService,
-        private _seoService: SeoService
+        private _seoService: SeoService,
+        private _locationService: LocationService
     ) { }
 
     public ngOnInit(): void {
@@ -94,7 +96,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
                 this._websiteService.setLoading(false);
                 if (newsItem) {
                     if (newsItem.content_type === 'redirect' && newsItem.content) {
-                        window.location.href = newsItem.content;
+                        this._locationService.replace(newsItem.content);
                     } else {
                         const slug = this.getSlug(newsItem.title);
                         if (slug !== this._route.snapshot.paramMap.get('slug')) {

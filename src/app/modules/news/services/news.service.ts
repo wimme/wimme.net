@@ -3,6 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import * as Showdown from 'showdown';
 import { ApiService } from '../../../services/api.service';
+import { LocationService } from '../../../services/location.service';
 import { News } from '../interfaces/news';
 
 @Injectable()
@@ -12,7 +13,8 @@ export class NewsService {
 
     constructor(
         private _sanitizer: DomSanitizer,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _locationService: LocationService
     ) {
         this._markdownConverter = new Showdown.Converter();
     }
@@ -22,7 +24,7 @@ export class NewsService {
         if (responsiveMaxWidth && percentage && window.innerWidth > responsiveMaxWidth) {
             imageWidth = '&w=' + Math.ceil(window.innerWidth * percentage * 0.01 * window.devicePixelRatio);
         }
-        const host = window.location.hostname;
+        const host = this._locationService.hostname;
         return url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`) + '?vw=' + window.innerWidth + '&dpr=' + window.devicePixelRatio + imageWidth;
     }
 
@@ -38,7 +40,7 @@ export class NewsService {
             html = this._markdownConverter.makeHtml(content);
         }
         if (html) {
-            const host = window.location.hostname;
+            const host = this._locationService.hostname;
             const hostEscaped = host.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
             const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|png|PNG|webp|WEBP)("|')`;
             const regex = new RegExp(pattern, 'gm');

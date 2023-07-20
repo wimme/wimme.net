@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { ApiService } from '../../../../services/api.service';
+import { LocationService } from '../../../../services/location.service';
 
 @Component({
     selector: 'app-contact',
@@ -22,7 +23,8 @@ export class ContactComponent implements OnInit {
 
     constructor(
         private _changeDetector: ChangeDetectorRef,
-        private _apiService: ApiService
+        private _apiService: ApiService,
+        private _locationService: LocationService
     ) { }
 
     public ngOnInit(): void {
@@ -80,7 +82,7 @@ export class ContactComponent implements OnInit {
     }
 
     public getCaptchaUrl(): string {
-        const host = window.location.hostname;
+        const host = this._locationService.hostname;
         return `https://cms.${host}/system/captcha.php`;
     }
 

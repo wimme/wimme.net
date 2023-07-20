@@ -23,7 +23,7 @@ export class WebsiteService {
     ) {
         this._router.events.pipe(
             filter(event => event instanceof NavigationStart)
-        ).subscribe(event => {
+        ).subscribe(() => {
             this.setLoading(true);
             this._seoService.clear();
         });

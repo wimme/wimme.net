@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Injector, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { Subject, takeUntil } from 'rxjs';
 import { ImageComponent } from './elements/image/image.component';
@@ -19,10 +20,12 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(
         injector: Injector,
         private _websiteService: WebsiteService,
-        private _changeDetector: ChangeDetectorRef
+        private _changeDetector: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) platformId: string
     ) {
-        const imageElement = createCustomElement(ImageComponent, { injector });
-        if (!window.customElements.get('image-element')) {
+        if (isPlatformBrowser(platformId)
+            && !window.customElements.get('image-element')) {
+            const imageElement = createCustomElement(ImageComponent, { injector });
             window.customElements.define('image-element', imageElement);
         }
     }

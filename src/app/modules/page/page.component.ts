@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Inject, Injector, OnInit, PLATFORM_ID } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -22,10 +23,12 @@ export class PageComponent implements OnInit {
         private _sanitizer: DomSanitizer,
         private _websiteService: WebsiteService,
         private _apiService: ApiService,
-        private _seoService: SeoService
+        private _seoService: SeoService,
+        @Inject(PLATFORM_ID) platformId: string
     ) {
-        const contactElement = createCustomElement(ContactComponent, { injector });
-        if (!window.customElements.get('contact-element')) {
+        if (isPlatformBrowser(platformId)
+            && !window.customElements.get('contact-element')) {
+            const contactElement = createCustomElement(ContactComponent, { injector });
             window.customElements.define('contact-element', contactElement);
         }
     }
