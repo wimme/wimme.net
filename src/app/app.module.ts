@@ -16,6 +16,9 @@ import { RecentsComponent } from './components/recents/recents.component';
 import { SearchComponent } from './components/search/search.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+import { LOCATION_PROVIDERS } from './providers/location.provider';
+import { WINDOW_PROVIDERS } from './providers/window.provider';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,7 +39,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
         HttpClientModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [
+        WINDOW_PROVIDERS,
+        LOCATION_PROVIDERS
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

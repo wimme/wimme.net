@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { LOCATION } from '../providers/location.provider';
 
 @Injectable({
     providedIn: 'root'
@@ -7,27 +7,27 @@ import { DOCUMENT } from '@angular/common';
 export class LocationService {
 
     constructor(
-        @Inject(DOCUMENT) private _document: Document
+        @Inject(LOCATION) private _location: Location
     ) {}
 
     get hostname(): string {
-        return this._document.location.hostname;
+        return this._location.hostname;
     }
 
     get href(): string {
-        return this._document.location.href;
+        return this._location.href;
     }
 
     get origin(): string {
-        return this._document.location.origin;
+        return this._location.origin;
     }
 
     public redirect(url: string): void {
-        this._document.location.href = url;
+        this._location.href = url;
     }
 
     public replace(url: string): void {
-        this._document.location.replace(url);
+        this._location.replace(url);
     }
 
 }

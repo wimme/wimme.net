@@ -29,7 +29,10 @@ function initializeRoutes(router: Router, websiteService: WebsiteService) {
             ...dynamicRoutes,
             ...staticRoutes
         ]),
-        map(routes => router.resetConfig(routes))
+        map(routes => {
+            router.resetConfig(routes);
+            router.initialNavigation();
+        })
     );
 }
 
@@ -38,7 +41,9 @@ const staticRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot([])],
+    imports: [RouterModule.forRoot([], {
+        //initialNavigation: 'enabledBlocking'
+    })],
     exports: [RouterModule],
     providers: [
         {

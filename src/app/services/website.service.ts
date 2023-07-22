@@ -29,11 +29,14 @@ export class WebsiteService {
         });
         this.navigation$ = this._apiService.get<NavigationItem[]>('core', 'getnav').pipe(shareReplay(1));
         this.settings$ = this._apiService.get<Settings>('core', 'getsettings').pipe(shareReplay(1));
-        this.settings$.subscribe(settings => {
-            this._seoService.setSiteName(settings.name);
-            this._seoService.setLanguage(settings.language);
-            this._seoService.setSiteDescription(settings.description);
-            this._seoService.setKeywords(settings.keywords);
+        this.settings$.subscribe({
+            next: settings => {
+                this._seoService.setSiteName(settings.name);
+                this._seoService.setLanguage(settings.language);
+                this._seoService.setSiteDescription(settings.description);
+                this._seoService.setKeywords(settings.keywords);
+            },
+            error: () => {}
         });
     }
 

@@ -4,6 +4,7 @@ import { createCustomElement } from '@angular/elements';
 import { Subject, takeUntil } from 'rxjs';
 import { ImageComponent } from './elements/image/image.component';
 import { WebsiteService } from './services/website.service';
+import { WindowRefService } from './services/windowref.service';
 
 @Component({
     selector: 'app-root',
@@ -20,13 +21,14 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(
         injector: Injector,
         private _websiteService: WebsiteService,
+        private _windowRefService: WindowRefService,
         private _changeDetector: ChangeDetectorRef,
         @Inject(PLATFORM_ID) platformId: string
     ) {
         if (isPlatformBrowser(platformId)
-            && !window.customElements.get('image-element')) {
+            && !this._windowRefService.nativeWindow.customElements.get('image-element')) {
             const imageElement = createCustomElement(ImageComponent, { injector });
-            window.customElements.define('image-element', imageElement);
+            this._windowRefService.nativeWindow.customElements.define('image-element', imageElement);
         }
     }
 

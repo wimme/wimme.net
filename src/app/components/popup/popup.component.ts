@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { ImageItem } from 'src/app/interfaces/imageitem';
+import { WindowRefService } from '../../services/windowref.service';
+import { ImageItem } from '../../interfaces/imageitem';
 
 @Component({
     selector: 'app-popup',
@@ -21,6 +22,7 @@ export class PopupComponent {
     public closed = new EventEmitter<void>();
 
     constructor(
+        private _windowRefService: WindowRefService,
         private _changeDetector: ChangeDetectorRef
     ) { }
 
@@ -35,7 +37,7 @@ export class PopupComponent {
     }
 
     public get maxHeight(): string {
-        return `${window.innerHeight - 100}px`;
+        return `${this._windowRefService.nativeWindow.innerHeight - 100}px`;
     }
 
     @HostListener('window:keyup.arrowleft', ['$event'])

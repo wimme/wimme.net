@@ -7,6 +7,7 @@ import { first, from, map, Observable, switchMap, tap } from 'rxjs';
 import { SeoService } from '../../services/seo.service';
 import { ApiService } from '../../services/api.service';
 import { WebsiteService } from '../../services/website.service';
+import { WindowRefService } from '../../services/windowref.service';
 import { ContactComponent } from './elements/contact/contact.component';
 
 @Component({
@@ -24,12 +25,13 @@ export class PageComponent implements OnInit {
         private _websiteService: WebsiteService,
         private _apiService: ApiService,
         private _seoService: SeoService,
+        private _windowRefService: WindowRefService,
         @Inject(PLATFORM_ID) platformId: string
     ) {
         if (isPlatformBrowser(platformId)
-            && !window.customElements.get('contact-element')) {
+            && !this._windowRefService.nativeWindow.customElements.get('contact-element')) {
             const contactElement = createCustomElement(ContactComponent, { injector });
-            window.customElements.define('contact-element', contactElement);
+            this._windowRefService.nativeWindow.customElements.define('contact-element', contactElement);
         }
     }
 

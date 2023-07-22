@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as Showdown from 'showdown';
 import { ApiService } from '../../../services/api.service';
 import { LocationService } from '../../../services/location.service';
+import { WindowRefService } from '../../../services/windowref.service';
 import { News } from '../interfaces/news';
 
 @Injectable()
@@ -14,18 +15,20 @@ export class NewsService {
     constructor(
         private _sanitizer: DomSanitizer,
         private _apiService: ApiService,
-        private _locationService: LocationService
+        private _locationService: LocationService,
+        private _windowRefService: WindowRefService
     ) {
         this._markdownConverter = new Showdown.Converter();
     }
 
     public getImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
+        const w = this._windowRefService.nativeWindow;
         let imageWidth = '';
-        if (responsiveMaxWidth && percentage && window.innerWidth > responsiveMaxWidth) {
-            imageWidth = '&w=' + Math.ceil(window.innerWidth * percentage * 0.01 * window.devicePixelRatio);
+        if (responsiveMaxWidth && percentage && w.innerWidth > responsiveMaxWidth) {
+            imageWidth = '&w=' + Math.ceil(w.innerWidth * percentage * 0.01 * w.devicePixelRatio);
         }
         const host = this._locationService.hostname;
-        return url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`) + '?vw=' + window.innerWidth + '&dpr=' + window.devicePixelRatio + imageWidth;
+        return url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`) + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {
@@ -44,7 +47,8 @@ export class NewsService {
             const hostEscaped = host.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
             const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|png|PNG|webp|WEBP)("|')`;
             const regex = new RegExp(pattern, 'gm');
-            html = html.replace(regex, `$1=$2https://img.${host}/$3.$4?vw=` + window.innerWidth + '&amp;dpr=' + window.devicePixelRatio + '$5');
+            const w = this._windowRefService.nativeWindow;
+            html = html.replace(regex, `$1=$2https://img.${host}/$3.$4?vw=` + w.innerWidth + '&amp;dpr=' + w.devicePixelRatio + '$5');
             html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
 		}
         return this._sanitizer.bypassSecurityTrustHtml(html);
