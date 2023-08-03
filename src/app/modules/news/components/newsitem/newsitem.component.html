@@ -20,14 +20,14 @@
         <div class="post-navigation-thumbnail" [style.background-image]="previousItem.image ? ('url(' + getImageUrl(previousItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">
             <div class="post-navigation-subtitle">Vorige post</div>
-            <h1 class="post-navigation-title"><a href="javascript:;" [routerLink]="['item', previousItem.id, getSlug(previousItem.title)]" rel="prev">{{previousItem.title}}</a></h1>
+            <h1 class="post-navigation-title"><a href="javascript:;" [routerLink]="previousItem.url" rel="prev">{{previousItem.title}}</a></h1>
         </div>
     </div>
     <div class="next-post" *ngIf="nextItem">
         <div class="post-navigation-thumbnail" [style.background-image]="nextItem.image ? ('url(' + getImageUrl(nextItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">
             <div class="post-navigation-subtitle">Volgende post</div>
-            <h1 class="post-navigation-title"><a href="javascript:;" [routerLink]="['item', nextItem.id, getSlug(nextItem.title)]" rel="next">{{nextItem.title}}</a></h1>
+            <h1 class="post-navigation-title"><a href="javascript:;" [routerLink]="nextItem.url" rel="next">{{nextItem.title}}</a></h1>
         </div>
     </div>
 </nav>

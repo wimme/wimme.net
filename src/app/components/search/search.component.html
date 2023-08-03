@@ -1,5 +1,5 @@
 <aside class="widget_search">
-    <form role="search" method="get" class="search-form" action="/" (ngSubmit)="onSubmit($event)">
+    <form role="search" method="post" class="search-form" action="/" (submit)="onSubmit($event)">
         <label>
             <span class="screen-reader-text">Zoeken op:</span>
             <input type="search" class="search-field" placeholder="Zoeken &hellip;" value="" name="s" [formControl]="searchField" />

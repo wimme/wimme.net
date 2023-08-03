@@ -1,6 +1,6 @@
 <p class="lead" *ngIf="!success">Hieronder kunt u een bericht naar me versturen.</p>
 <p class="success" *ngIf="success"><strong>Success!</strong> Uw bericht werd verzonden. Ik contacteer u zo vlug mogelijk.</p>
-<form action="#" name="form" method="post" (ngSubmit)="onSubmit($event)" class="contact-form" *ngIf="!success" [formGroup]="contactForm">
+<form action="#" name="form" method="post" (submit)="onSubmit($event)" class="contact-form" *ngIf="!success" [formGroup]="contactForm">
     <p class="error" *ngIf="error">{{error}}</p>
     <p class="contact-form-author">
         <input type="text" name="name" placeholder="Naam" formControlName="name" [class.error]="hasError('name')" required="required" />

@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import * as Showdown from 'showdown';
@@ -16,19 +17,24 @@ export class NewsService {
         private _sanitizer: DomSanitizer,
         private _apiService: ApiService,
         private _locationService: LocationService,
-        private _windowRefService: WindowRefService
+        private _windowRefService: WindowRefService,
+        @Inject(PLATFORM_ID) private _platformId: string
     ) {
         this._markdownConverter = new Showdown.Converter();
     }
 
     public getImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
-        const w = this._windowRefService.nativeWindow;
-        let imageWidth = '';
-        if (responsiveMaxWidth && percentage && w.innerWidth > responsiveMaxWidth) {
-            imageWidth = '&w=' + Math.ceil(w.innerWidth * percentage * 0.01 * w.devicePixelRatio);
-        }
         const host = this._locationService.hostname;
-        return url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`) + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
+        const imageUrl = url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`);
+        if (isPlatformBrowser(this._platformId)) {
+            const w = this._windowRefService.nativeWindow;
+            let imageWidth = '';
+            if (responsiveMaxWidth && percentage && w.innerWidth > responsiveMaxWidth) {
+                imageWidth = '&w=' + Math.ceil(w.innerWidth * percentage * 0.01 * w.devicePixelRatio);
+            }
+            return imageUrl + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
+        }
+        return imageUrl + (percentage ? `?p=${percentage}` : '');
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {
@@ -52,14 +58,6 @@ export class NewsService {
             html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
 		}
         return this._sanitizer.bypassSecurityTrustHtml(html);
-    }
-
-    public getSlug(title: string): string {
-        return title.toLowerCase()
-            .trim()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/[\s_-]+/g, '-')
-            .replace(/^-+|-+$/g, '');
     }
 
     public getPinned(id: number, category?: number): Observable<News[]> {

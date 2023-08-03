@@ -80,10 +80,6 @@ export class NewsItemComponent implements OnInit, OnDestroy {
         return this._newsService.getHtml(content, contentType);
     }
 
-    public getSlug(title: string): string {
-        return this._newsService.getSlug(title);
-    }
-
     private _update(): void {
         this._newsItemSubscription?.unsubscribe();
         this._nextSubscription?.unsubscribe();
@@ -97,11 +93,6 @@ export class NewsItemComponent implements OnInit, OnDestroy {
                 if (newsItem) {
                     if (newsItem.content_type === 'redirect' && newsItem.content) {
                         this._locationService.replace(newsItem.content);
-                    } else {
-                        const slug = this.getSlug(newsItem.title);
-                        if (slug !== this._route.snapshot.paramMap.get('slug')) {
-                            this._router.navigate(['item', this._newsId, slug], { replaceUrl: true });
-                        }
                     }
                     this._seoService.update(newsItem.title, 'article', newsItem.content_preview, this.getImageUrl(newsItem.image));
                 }
