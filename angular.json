@@ -31,8 +31,10 @@
             "assets": [
               "src/.htaccess",
               "src/favicon.ico",
+              "src/robots.txt",
               "src/assets",
               "src/feed",
+              "src/sitemap",
               "src/googlef094e9a083a9b1fe.html",
               "src/tradetracker9d60cbc664982612.html"
             ],
