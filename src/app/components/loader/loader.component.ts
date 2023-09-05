@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { map, Observable, of } from 'rxjs';
 import { WebsiteService } from '../../services/website.service';
 
 @Component({
@@ -13,14 +14,15 @@ export class LoaderComponent implements OnInit {
     public isHidden$!: Observable<boolean>;
 
     constructor(
-        private _websiteService: WebsiteService
+        private _websiteService: WebsiteService,
+        @Inject(PLATFORM_ID) private _platformId: string
     ) {}
 
-    public hidden = false;
-
     public ngOnInit(): void {
-        this.isHidden$ = this._websiteService.isLoading$.pipe(
-            map(isLoading => !isLoading)
-        );
+        this.isHidden$ = isPlatformBrowser(this._platformId)
+            ? this._websiteService.isLoading$.pipe(
+                map(isLoading => !isLoading)
+              )
+            : of(false);
     }
 }
