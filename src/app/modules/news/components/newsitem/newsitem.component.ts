@@ -94,7 +94,13 @@ export class NewsItemComponent implements OnInit, OnDestroy {
                     if (newsItem.content_type === 'redirect' && newsItem.content) {
                         this._locationService.replace(newsItem.content);
                     }
-                    this._seoService.update(newsItem.title, 'article', newsItem.content_preview, this.getImageUrl(newsItem.image));
+                    this._seoService.update({
+                        title: newsItem.title,
+                        type: 'article',
+                        description: newsItem.content_preview,
+                        image: newsItem.image ? this.getImageUrl(newsItem.image) : '',
+                        utcPublished: newsItem.date
+                    });
                 }
                 this._changeDectector.markForCheck();
             });

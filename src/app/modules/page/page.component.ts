@@ -42,7 +42,10 @@ export class PageComponent implements OnInit {
                 first(nav => nav.url === this._route.snapshot.parent?.routeConfig?.path)
             )),
             switchMap(nav => {
-                this._seoService.update(nav.url ? nav.name : '', 'website');
+                this._seoService.update({
+                    title: nav.url ? nav.name : '',
+                    type: 'website'
+                });
                 return this._getPage(nav.id)
             }),
             tap(() => { this._websiteService.setLoading(false); })

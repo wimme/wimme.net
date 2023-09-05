@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Meta, Title } from "@angular/platform-browser";
-import { LocationService } from './location.service';
+import { Meta, Title } from '@angular/platform-browser';
+import { SeoJsonLdService } from './seo-json-ld.service';
+import { SeoItem } from '../interfaces/seoitem';
 
 @Injectable({
     providedIn: 'root'
@@ -14,140 +15,170 @@ export class SeoService {
     constructor(
         private _titleService: Title,
         private _metaService: Meta,
-        private _locationService: LocationService,
+        private _jsonLdService : SeoJsonLdService,
         @Inject(DOCUMENT) private _document: Document) {
     }
 
-    private _setMetaTag(attr: 'name' | 'property' | 'itemprop', attrValue: string, content?: string | undefined, selector?: string) {
-        if (content) {
-            this._metaService.updateTag({ [attr]: attrValue, content }, selector);
-        } else {
-            this._metaService.removeTag(`${attr}='${attrValue}'`);
-        }
-    }
-
     public clear(): void {
-        this._removeStructuredData();
+        this._jsonLdService.removeStructuredData();
         this.update();
     }
 
     public setSiteDescription(description?: string): void {
         this._siteDescription = description;
-        this._setMetaTag('name', 'description', description);
+        if (description) {
+            this._metaService.updateTag({ name: 'description', content: description });
+        } else {
+            this._metaService.removeTag(`name='description'`);
+        }
     }
 
-    public setKeywords(keywords?: string | string[]) {
+    public setKeywords(keywords?: string | string[]): void {
         const wordsAsString = keywords instanceof Array ? keywords?.join(',') : keywords;
-        this._setMetaTag('name', 'keywords', wordsAsString);
+        if (wordsAsString) {
+            this._metaService.updateTag({ name: 'keywords', content: wordsAsString });
+        } else {
+            this._metaService.removeTag(`name='keywords'`);
+        }
     }
 
     public setSiteName(siteName?: string) {
         this._siteName = siteName;
-        this._setMetaTag('name', 'og:site_name', siteName);
+        if (siteName) {
+            this._metaService.updateTag({ name: 'og:site_name', content: siteName });
+        } else {
+            this._metaService.removeTag(`name='og:site_name'`);
+        }
     }
 
     public setLanguage(language: string) {
         this._document.documentElement.lang = language;
-        this._setMetaTag('property', 'og:locale', language);
+        if (language) {
+            this._metaService.updateTag({ property: 'og:locale', content: language });
+        } else {
+            this._metaService.removeTag(`property='og:locale'`);
+        }
     }
 
-    public update(title?: string, type?: 'article' | 'website', description?: string, image?: string) {
-        this._setTitle(title);
-        this._setType(type);
-        this._setDescription(description);
-        this._setImage(image);
-        this._insertSchema(this._generateSchema([
-            this._websiteSchema(this._siteName, this._siteDescription),
-            this._webpageSchema(title, description, image)
-        ]));
+    public update(data?: SeoItem): void {
+        this._setSection(data?.section);
+        this._setTitle(data?.title);
+        this._setType(data?.type);
+        this._setDescription(data?.description);
+        this._setImage(data?.image);
+        this._setUrl(data?.url);
+        this._setPublished(data?.utcPublished);
+        this._setModified(data?.utcModified);
+        this._setAuthor(data?.author);
+        this._jsonLdService.update(this._siteName, this._siteDescription, data);
     }
 
-    private _setType(type?: 'article' | 'website'): void {
-        this._setMetaTag('property', 'og:type', type);
+    private _setSection(section?: string): void {
+        if (section) {
+            this._metaService.updateTag({ name: 'article:section', content: section });
+        } else {
+            this._metaService.removeTag(`name='article:section'`);
+        }
+    }
+
+    private _setTitle(title: string = ''): void {
+        if (title && title.length) {
+            this._titleService.setTitle(`${title} - ${this._siteName}`);
+            this._metaService.updateTag({ property: 'og:image:alt', content: title });
+            this._metaService.updateTag({ property: 'og:title', content: title });
+            this._metaService.updateTag({ name: 'title', content: title });
+            this._metaService.updateTag({ itemprop: 'name', content: title }, `itemprop='name'`);
+        } else {
+            this._titleService.setTitle(this._siteName || '');
+            this._metaService.removeTag(`property='og:image:alt'`);
+            this._metaService.removeTag(`property='og:title'`);
+            this._metaService.removeTag(`name='title'`);
+            this._metaService.removeTag(`itemprop='name'`);
+        }
+    }
+
+    public _setType(type?: 'article' | 'website'): void {
+        if (type && type.length) {
+            this._metaService.updateTag({ property: 'og:type', content: type });
+        } else {
+            this._metaService.removeTag(`property='og:type'`);
+        }
     }
 
     private _setDescription(description?: string): void {
-        this._setMetaTag('name', 'twitter:description', description);
-        this._setMetaTag('property', 'og:description', description);
-        this._setMetaTag('itemprop', 'description', description, `itemprop='description'`);
-    }
-
-    private _setAuthor(author?: string) {
-        this._setMetaTag('name', 'author', author);
-        this._setMetaTag('name', 'article:author', author);
+        if (description && description.length) {
+            this._metaService.updateTag({ property: 'og:description', content: description });
+            this._metaService.updateTag({ itemprop: 'description', content: description }, `itemprop='description'`);
+        } else {
+            this._metaService.removeTag(`property='og:description'`);
+            this._metaService.removeTag(`itemprop='description'`);
+        }
     }
 
     private _setImage(image?: string): void {
-        this._setMetaTag('property', 'og:image', image);
-    }
-
-    private _setTitle(title?: string): void {
-        if (title) {
-            this._titleService.setTitle(`${title} - ${this._siteName}`);
+        if (image && image.length) {
+            this._metaService.updateTag({ itemprop: 'image', content: image }, `itemprop='image'`);
+            this._metaService.updateTag({ property: 'og:image', content: image });
+        } else {
+            this._metaService.removeTag(`property='og:image'`);
+            this._metaService.removeTag(`itemprop='image'`);
         }
-        else {
-            this._titleService.setTitle(this._siteName || '');
+    }
+
+    private _setUrl(url?: string): void {
+        if (url && url.length) {
+            this._metaService.updateTag({ property: 'og:url', content: url });
+        } else {
+            this._metaService.removeTag(`property='og:url'`);
         }
-        this._setMetaTag('name', 'title', title);
-        this._setMetaTag('name', 'twitter:title', title);
-        this._setMetaTag('name', 'twitter:image:alt', title);
-        this._setMetaTag('property', 'og:title', title);
-        this._setMetaTag('property', 'og:image:alt', title);
-        this._setMetaTag('itemprop', 'name', title, `itemprop='name'`);
+        this._setCanonicalUrl(url);
     }
 
-    private _removeStructuredData(): void {
-		const els: HTMLScriptElement[] = [];
-		[ 'structured-data', 'structured-data-org' ].forEach(c => {
-			els.push(...Array.from(this._document.head.getElementsByClassName(c) as HTMLCollectionOf<HTMLScriptElement>));
-		});
-		els.forEach(el => this._document.head.removeChild(el));
-	}
-
-	private _insertSchema(schema: Record<string, any>, className = 'structured-data'): void {
-		let script: HTMLScriptElement;
-		let shouldAppend = false;
-		if (this._document.head.getElementsByClassName(className).length) {
-			script = this._document.head.getElementsByClassName(className)[0] as HTMLScriptElement;
-		} else {
-			script = this._document.createElement('script');
-			shouldAppend = true;
-		}
-		script.setAttribute('class', className);
-		script.type = 'application/json+ld';
-		script.text = JSON.stringify(schema);
-		if (shouldAppend) {
-			this._document.head.appendChild(script);
-		}
-	}
-
-    private _generateSchema(schemas: Record<string, any>[]): Record<string, any> {
-        return {
-            '@context': 'http://schema.org',
-            '@graph': schemas
-        };
+    private _setPublished(utcPublished?: number): void {
+        if (utcPublished) {
+            const publishedDate = new Date(utcPublished * 1000);
+            this._metaService.updateTag({ name: 'article:published_time', content: publishedDate.toISOString() });
+            this._metaService.updateTag({ name: 'publication_date', content: publishedDate.toISOString() });
+        } else {
+            this._metaService.removeTag(`name='article:published_time'`);
+            this._metaService.removeTag(`name='publication_date'`);
+        }
     }
 
-    private _websiteSchema(name?: string, description?: string): Record<string, any> {
-		return {
-			'@type': 'WebSite',
-            '@id': `${this._locationService.origin}/#website`,
-			url: this._locationService.origin,
-			name: name,
-            description: description
-		};
-	}
+    private _setModified(utcModified?: number): void {
+        if (utcModified) {
+            const modifiedDate = new Date(utcModified * 1000);
+            this._metaService.updateTag({ name: 'article:modified_time', content: modifiedDate.toISOString() });
+            this._metaService.updateTag({ name: 'og:updated_time', content: modifiedDate.toISOString() });
+        } else {
+            this._metaService.removeTag(`name='article:modified_time'`);
+            this._metaService.removeTag(`name='og:updated_time'`);
+        }
+    }
 
-    private _webpageSchema(title?: string, description?: string, image?: string): Record<string, any> {
-        return {
-			'@type': 'WebPage',
-			url: this._locationService.href,
-			name: title || this._siteName,
-            isPartOf: {
-                '@id': `${this._locationService.origin}/#website`
-            },
-            description: description,
-            thumbnailUrl: image
-        };
+    private _setAuthor(author?: string): void {
+        if (author && author.length) {
+            this._metaService.updateTag({ name: 'article:author', content: author });
+            this._metaService.updateTag({ name: 'author', content: author });
+        } else {
+            this._metaService.removeTag(`name='article:author'`);
+            this._metaService.removeTag(`name='author'`);
+        }
+    }
+
+    private _setCanonicalUrl(url?: string): void {
+        // first remove potential previous url
+        const selector = `link[rel='canonical']`;
+        const canonicalElement = this._document.head.querySelector(selector);
+        if (canonicalElement) {
+            this._document.head.removeChild(canonicalElement);
+        }
+
+        if (url && url.length) {
+            const link: HTMLLinkElement = this._document.createElement('link');
+            link.setAttribute('rel', 'canonical');
+            link.setAttribute('href', url);
+            this._document.head.appendChild(link);
+        }
     }
 }

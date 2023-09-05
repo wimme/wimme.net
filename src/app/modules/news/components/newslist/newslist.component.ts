@@ -46,7 +46,10 @@ export class NewsListComponent implements OnInit, OnDestroy {
             if (this._id !== nav.id) {
                 this._id = nav.id;
                 this._update();
-                this._seoService.update(nav.url ? nav.name : '', 'website');
+                this._seoService.update({
+                    title: nav.url ? nav.name : '',
+                    type: 'website'
+                });
             }
         });
 
