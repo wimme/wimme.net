@@ -45,11 +45,14 @@ DirectoryIndex index.php index.html
   # Proxy to backend:
   #RewriteRule ^feed/(.*)$ https://cms.wimme.net/feed/$1 [P]
 
+  # Since DirectorySlash is disabled,
+  # Rewrite the URL to append a trailing slash to directories internally (required for Angular Universal prerender):
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule (.*[^/])$ $1/ [L]
+
   # Redirection of requests to index.html
   RewriteCond %{REQUEST_FILENAME} !-f
-  #RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} !=/feed/
-  RewriteCond %{REQUEST_URI} !=/sitemap/
+  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
   RewriteCond %{REQUEST_URI} !=/robots.txt
   RewriteRule ^ index.html [L]
