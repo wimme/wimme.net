@@ -1,18 +1,15 @@
 <IfModule mod_headers.c>
   # Apply some more security.
   Header set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
-  Header set Content-Security-Policy: "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src cms.wimme.net 'self'; img-src img.wimme.net cms.wimme.net data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
+  Header set Content-Security-Policy: "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src cms.skipdewinterdip.be 'self'; img-src img.skipdewinterdip.be cms.skipdewinterdip.be data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
 
   # Request client hints for image proxy.
   Header set Accept-CH: "Sec-CH-Viewport-Width, Sec-CH-Width, Sec-CH-DPR"
-  Header set Permissions-Policy: "ch-viewport-width=(self \"https://img.wimme.net\"), ch-width=(self \"https://img.wimme.net\"), ch-dpr=(self \"https://img.wimme.net\")"
+  Header set Permissions-Policy: "ch-viewport-width=(self \"https://img.skipdewinterdip.be\"), ch-width=(self \"https://img.skipdewinterdip.be\"), ch-dpr=(self \"https://img.skipdewinterdip.be\")"
 </IfModule>
 
 # Don't show directory listings for URLs which map to a directory.
 Options -Indexes
-
-# Prevent mod_dir appending trailing slash to directories (required for Angular Universal prerender)
-DirectorySlash Off
 
 # Set the default handler.
 DirectoryIndex index.php index.html
@@ -43,8 +40,10 @@ DirectoryIndex index.php index.html
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
   # Proxy to backend:
-  #RewriteRule ^feed/(.*)$ https://cms.wimme.net/feed/$1 [P]
+  #RewriteRule ^feed/(.*)$ https://cms.skipdewinterdip.be/feed/$1 [P]
 
+  # Prevent mod_dir appending trailing slash to directories (required for Angular Universal prerender)
+  DirectorySlash Off
   # Since DirectorySlash is disabled,
   # Rewrite the URL to append a trailing slash to directories internally (required for Angular Universal prerender):
   RewriteCond %{REQUEST_FILENAME} -d

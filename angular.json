@@ -29,14 +29,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/.htaccess",
               "src/favicon.ico",
               "src/robots.txt",
-              "src/assets",
+              { "glob": "**", "input": "src/assets/wimme.net", "output": "/" },
               "src/feed",
-              "src/sitemap",
-              "src/googlef094e9a083a9b1fe.html",
-              "src/tradetracker9d60cbc664982612.html"
+              "src/sitemap"
             ],
             "styles": [
               "src/styles/styles.scss",
@@ -60,6 +57,32 @@
               ],
               "outputHashing": "all"
             },
+            "production-skipdewinterdip.be": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "index": {
+                "input": "src/index-skipdewinterdip.be.html",
+                "output": "index.html"
+              },
+              "assets": [
+                "src/favicon.ico",
+                "src/robots.txt",
+                { "glob": "**", "input": "src/assets/skipdewinterdip.be", "output": "/" },
+                "src/feed",
+                "src/sitemap"
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -79,7 +102,7 @@
             },
             "development": {
               "browserTarget": "wimme.net:build:development",
-              "proxyConfig": "proxy.conf.mjs"
+              "proxyConfig": "proxy-wimme.net.conf.mjs"
             }
           },
           "defaultConfiguration": "development"
@@ -155,6 +178,10 @@
           "configurations": {
             "production": {
               "browserTarget": "wimme.net:build:production",
+              "serverTarget": "wimme.net:server:production"
+            },
+            "production-skipdewinterdip.be": {
+              "browserTarget": "wimme.net:build:production-skipdewinterdip.be",
               "serverTarget": "wimme.net:server:production"
             },
             "development": {

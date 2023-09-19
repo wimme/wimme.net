@@ -11,8 +11,8 @@
     "serve:ssr": "node dist/wimme.net/server/main.js",
     "build:ssr": "ng build && ng run wimme.net:server",
     "prerender": "ng run wimme.net:prerender",
-    "prerender:wimme.net": "node createRoutesFile.mjs https://cms.wimme.net/system/json/ && ng run wimme.net:prerender --no-guess-routes --routes-file routes.txt",
-    "prerender:skipdewinterdip.be": "node createRoutesFile.mjs https://cms.skipdewinterdip.be/system/json/ && ng run wimme.net:prerender --no-guess-routes --routes-file routes.txt"
+    "prerender:wimme.net": "node prerender.mjs wimme.net",
+    "prerender:skipdewinterdip.be": "node prerender.mjs skipdewinterdip.be"
   },
   "private": true,
   "dependencies": {
