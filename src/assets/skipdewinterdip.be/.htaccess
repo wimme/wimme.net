@@ -1,7 +1,7 @@
 <IfModule mod_headers.c>
   # Apply some more security.
   Header set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
-  Header set Content-Security-Policy: "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src cms.skipdewinterdip.be 'self'; img-src img.skipdewinterdip.be cms.skipdewinterdip.be data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
+  Header set Content-Security-Policy: "default-src 'none'; script-src analytics.wimme.net 'self' 'unsafe-inline' 'unsafe-eval'; connect-src cms.skipdewinterdip.be analytics.wimme.net 'self'; img-src img.skipdewinterdip.be cms.skipdewinterdip.be data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
 
   # Request client hints for image proxy.
   Header set Accept-CH: "Sec-CH-Viewport-Width, Sec-CH-Width, Sec-CH-DPR"

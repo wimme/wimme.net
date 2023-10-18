@@ -10,7 +10,7 @@
     "dev:ssr": "ng run wimme.net:serve-ssr",
     "serve:ssr": "node dist/wimme.net/server/main.js",
     "build:ssr": "ng build && ng run wimme.net:server",
-    "prerender": "ng run wimme.net:prerender",
+    "prerender": "ng run wimme.net:prerender --no-guess-routes --routes-file routes.txt",
     "prerender:wimme.net": "node prerender.mjs wimme.net",
     "prerender:skipdewinterdip.be": "node prerender.mjs skipdewinterdip.be"
   },
@@ -28,6 +28,7 @@
     "@angular/router": "^16.1.6",
     "@nguniversal/express-engine": "^16.1.1",
     "express": "^4.15.2",
+    "ngx-matomo-client": "^5.0.4",
     "rxjs": "~7.8.0",
     "showdown": "^2.1.0",
     "tslib": "^2.3.0",

@@ -12,7 +12,13 @@ import { LOCATION } from './providers/location.provider';
         ServerModule,
     ],
     providers: [
-        { provide: LOCATION, useFactory: () => { return { hostname: process.env['HOSTNAME'], origin: `https://${process.env['HOSTNAME']}`, replace: () => {} } }}
+        {
+            provide: LOCATION,
+            useFactory: () => {
+                const hostname = process.env['HOSTNAME'] || 'wimme.net';
+                return { hostname: hostname, origin: `https://${hostname}`, replace: () => {} }
+            }
+        }
     ],
     bootstrap: [AppComponent],
 })
