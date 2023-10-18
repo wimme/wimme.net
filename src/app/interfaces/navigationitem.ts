@@ -3,4 +3,5 @@ export interface NavigationItem {
     name: string;
     module: string;
     url: string;
+    showInMenu: boolean;
 }
