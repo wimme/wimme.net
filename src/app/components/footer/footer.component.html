@@ -3,6 +3,7 @@
         <li *ngFor="let social of socials"><a href="javascript:;" [href]="social.url" target="_blank" [title]="social.name"><span class="genericon" [ngClass]="'genericon-' + social.name.toLowerCase()"></span></a></li>
     </ul>
     <div class="site-copyright">
-        <p>&copy; {{getCurrentYear()}} {{(settings$ | async)?.name}}. {{(settings$ | async)?.footer}}</p>
+        <p>&copy; {{getCurrentYear()}} {{(settings$ | async)?.name}}.</p>
+        <div *ngIf="(settings$ | async)?.footer as footer" [innerHTML]="footer"></div>
     </div>
 </footer>
