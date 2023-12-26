@@ -98,11 +98,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "wimme.net:build:production"
+              "buildTarget": "wimme.net:build:production"
             },
             "development": {
-              "browserTarget": "wimme.net:build:development",
-              "proxyConfig": "proxy-wimme.net.conf.mjs"
+              "proxyConfig": "proxy-wimme.net.conf.mjs",
+              "buildTarget": "wimme.net:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -110,7 +110,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wimme.net:build"
+            "buildTarget": "wimme.net:build"
           }
         },
         "test": {
@@ -155,7 +155,7 @@
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
               "browserTarget": "wimme.net:build:development",
@@ -169,11 +169,10 @@
           "defaultConfiguration": "development"
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "discoverRoutes": false,
+            "routesFile": "routes.txt"
           },
           "configurations": {
             "production": {

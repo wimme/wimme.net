@@ -74,10 +74,7 @@ async function run() {
     const child = spawn('npx', [
         'ng',
         'run',
-        `wimme.net:prerender${hostname !== 'wimme.net' ? `:production-${hostname}`: ''}`,
-        '--no-guess-routes',
-        '--routes-file',
-        'routes.txt'
+        `wimme.net:prerender${hostname !== 'wimme.net' ? `:production-${hostname}`: ''}`
     ], { shell: process.platform === 'win32' });
     child.stdout.pipe(process.stdout);
 }
