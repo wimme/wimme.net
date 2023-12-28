@@ -25,16 +25,16 @@ export class NewsService {
 
     public getImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
         const host = this._locationService.hostname;
-        const imageUrl = url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`);
-        if (isPlatformBrowser(this._platformId)) {
-            const w = this._windowRefService.nativeWindow;
-            let imageWidth = '';
-            if (responsiveMaxWidth && percentage && w.innerWidth > responsiveMaxWidth) {
-                imageWidth = '&w=' + Math.ceil(w.innerWidth * percentage * 0.01 * w.devicePixelRatio);
-            }
-            return imageUrl + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
+        if (!isPlatformBrowser(this._platformId)) {
+            return `https://cms.${host}/sites/cms.${host}/placeholder.svg`;
         }
-        return imageUrl + (percentage ? `?p=${percentage}` : '');
+        const imageUrl = url.replace(`sites/cms.${host}/files/`, `https://img.${host}/`);
+        const w = this._windowRefService.nativeWindow;
+        let imageWidth = '';
+        if (responsiveMaxWidth && percentage && w.innerWidth > responsiveMaxWidth) {
+            imageWidth = '&w=' + Math.ceil(w.innerWidth * percentage * 0.01 * w.devicePixelRatio);
+        }
+        return imageUrl + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {
@@ -53,8 +53,7 @@ export class NewsService {
             const hostEscaped = host.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
             const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|png|PNG|webp|WEBP)("|')`;
             const regex = new RegExp(pattern, 'gm');
-            const w = this._windowRefService.nativeWindow;
-            html = html.replace(regex, `$1=$2https://img.${host}/$3.$4?vw=` + w.innerWidth + '&amp;dpr=' + w.devicePixelRatio + '$5');
+            html = html.replace(regex, `$1=$2${this.getImageUrl(`sites/cms.${host}/files/$3.$4`)}$5`);
             html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
 		}
         return this._sanitizer.bypassSecurityTrustHtml(html);
