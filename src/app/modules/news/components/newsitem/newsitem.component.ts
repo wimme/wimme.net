@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { first, from, Subject, Subscription, switchMap, takeUntil } from 'rxjs';
 import { LocationService } from '../../../../services/location.service';
 import { SeoService } from '../../../../services/seo.service';
@@ -31,8 +31,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
     private readonly _destroy = new Subject<void>();
 
     constructor(
-        private _route: ActivatedRoute,
-        private _router: Router,
+        public route: ActivatedRoute,
         private _changeDectector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService,
@@ -43,7 +42,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
     public ngOnInit(): void {
         this._websiteService.navigation$.pipe(
             switchMap(navigation => from(navigation).pipe(
-                first(nav => nav.url === this._route.snapshot.parent?.routeConfig?.path)
+                first(nav => nav.url === this.route.snapshot.parent?.routeConfig?.path)
             )),
             takeUntil(this._destroy)
         ).subscribe(nav => {
@@ -53,7 +52,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
             }
         });
 
-        this._route.paramMap.pipe(
+        this.route.paramMap.pipe(
             takeUntil(this._destroy)
         ).subscribe(params => {
             const newsId = params.get('id');

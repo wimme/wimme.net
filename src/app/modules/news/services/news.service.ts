@@ -51,7 +51,7 @@ export class NewsService {
         if (html) {
             const host = this._locationService.hostname;
             const hostEscaped = host.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
-            const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|png|PNG|webp|WEBP)("|')`;
+            const pattern = `(href|src)=("|')\\/?sites\\/cms\\.${hostEscaped}\\/files\\/(\\S+)\\.(jpg|JPG|jpeg|JPEG|png|PNG|webp|WEBP)("|')`;
             const regex = new RegExp(pattern, 'gm');
             html = html.replace(regex, `$1=$2${this.getImageUrl(`sites/cms.${host}/files/$3.$4`)}$5`);
             html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
