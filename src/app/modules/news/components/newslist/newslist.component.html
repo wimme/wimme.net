@@ -1,6 +1,6 @@
 <ul id="newsfeed" class="news-feed">
     <li *ngFor="let item of pinned" [id]="'news-' + item.id" class="pinned news-item">
-        <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getImageUrl(item.image, 767, 50) + ')') : ''"></div>
+        <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getResponsiveImageUrl(item.image, 767, 50) + ')') : ''"></div>
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">
@@ -13,7 +13,7 @@
         <div class="news-content" [innerHtml]="getHtml(item.content, item.content_type)"></div>
     </li>
     <li *ngFor="let item of news" [id]="'news-' + item.id" class="news-item" itemscope itemtype="http://schema.org/Article">
-        <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getImageUrl(item.image, 767, 50) + ')') : ''"></div>
+        <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getResponsiveImageUrl(item.image, 767, 50) + ')') : ''"></div>
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">

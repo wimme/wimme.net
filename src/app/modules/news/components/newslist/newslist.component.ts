@@ -72,8 +72,8 @@ export class NewsListComponent implements OnInit, OnDestroy {
         this._destroy.complete();
     }
 
-    public getImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
-        return this._newsService.getImageUrl(url, responsiveMaxWidth, percentage);
+    public getResponsiveImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
+        return this._newsService.getResponsiveImageUrl(url, responsiveMaxWidth, percentage);
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {

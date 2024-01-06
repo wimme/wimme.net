@@ -71,8 +71,8 @@ export class NewsItemComponent implements OnInit, OnDestroy {
         this._destroy.complete();
     }
 
-    public getImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
-        return this._newsService.getImageUrl(url, responsiveMaxWidth, percentage);
+    public getResponsiveImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
+        return this._newsService.getResponsiveImageUrl(url, responsiveMaxWidth, percentage);
     }
 
     public getHtml(content: string, contentType: string): SafeHtml {
@@ -97,7 +97,7 @@ export class NewsItemComponent implements OnInit, OnDestroy {
                         title: newsItem.title,
                         type: 'article',
                         description: newsItem.content_preview,
-                        image: newsItem.image ? this.getImageUrl(newsItem.image) : '',
+                        image: newsItem.image ? this._newsService.getImageUrl(newsItem.image) : '',
                         utcPublished: newsItem.date
                     });
                 }
