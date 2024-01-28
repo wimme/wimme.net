@@ -41,6 +41,10 @@ ul.news-feed li:hover .news-thumbnail {
 	opacity: .5;
 }
 
+ul.news-feed .post-time {
+	display: none;
+}
+
 @media only screen and (max-width: 767px) {
 
 	ul.news-feed li {
