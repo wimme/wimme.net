@@ -6,7 +6,7 @@ import * as Showdown from 'showdown';
 import { ApiService } from '../../../services/api.service';
 import { LocationService } from '../../../services/location.service';
 import { WindowRefService } from '../../../services/windowref.service';
-import { News } from '../interfaces/news';
+import { News, NewsContentType } from '../interfaces/news';
 
 @Injectable()
 export class NewsService {
@@ -20,7 +20,7 @@ export class NewsService {
         private _windowRefService: WindowRefService,
         @Inject(PLATFORM_ID) private _platformId: string
     ) {
-        this._markdownConverter = new Showdown.Converter();
+        this._markdownConverter = new Showdown.Converter({ metadata: true });
     }
 
     public getImageUrl(url: string): string {
@@ -40,9 +40,9 @@ export class NewsService {
         return this.getImageUrl(url) + '?vw=' + w.innerWidth + '&dpr=' + w.devicePixelRatio + imageWidth;
     }
 
-    public getHtml(content: string, contentType: string): SafeHtml {
+    public getHtml(content: string, contentType: NewsContentType): SafeHtml {
         let html = content;
-        if (contentType === 'md') {
+        if (contentType === NewsContentType.Markdown) {
             this._markdownConverter.setFlavor('github');
             this._markdownConverter.setOption('noHeaderId', true);
             this._markdownConverter.setOption('smoothLivePreview', true);
@@ -60,6 +60,10 @@ export class NewsService {
             html = html.replace(/(href|src)=("|')\/?sites\/(\S+)("|')/, `$1=$2https://cms.${host}/sites/$3$4`);
 		}
         return this._sanitizer.bypassSecurityTrustHtml(html);
+    }
+
+    public getMetadata(): Showdown.Metadata {
+        return this._markdownConverter.getMetadata() as Showdown.Metadata;
     }
 
     public getPinned(id: number, category?: number): Observable<News[]> {

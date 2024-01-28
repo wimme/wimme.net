@@ -5,33 +5,31 @@ import { first, from, Subject, Subscription, switchMap, takeUntil } from 'rxjs';
 import { LocationService } from '../../../../services/location.service';
 import { SeoService } from '../../../../services/seo.service';
 import { WebsiteService } from '../../../../services/website.service';
-import { News } from '../../interfaces/news';
+import { News, NewsContentType } from '../../interfaces/news';
 import { NewsService } from '../../services/news.service';
 
 @Component({
-    selector: 'app-news-item',
-    templateUrl: './newsitem.component.html',
+    selector: 'app-news-item-page',
+    templateUrl: './newsitempage.component.html',
     styleUrls: [
-        './newsitem.component.scss',
+        './newsitempage.component.scss',
         '../../styles/news.scss'
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsItemComponent implements OnInit, OnDestroy {
+export class NewsItemPageComponent implements OnInit, OnDestroy {
 
-    public newsItem!: News;
-    public nextItem?: News;
-    public previousItem?: News;
-
-    private _id!: number;
-    private _newsId!: number;
+    public newsItem?: News;
+    public newsItemHtml?: SafeHtml;
+    public id?: number;
+    public newsId?: number;
+    public category?: number;
 
     private _newsItemSubscription?: Subscription;
-    private _nextSubscription?: Subscription;
     private readonly _destroy = new Subject<void>();
 
     constructor(
-        public route: ActivatedRoute,
+        private _route: ActivatedRoute,
         private _changeDectector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService,
@@ -42,23 +40,23 @@ export class NewsItemComponent implements OnInit, OnDestroy {
     public ngOnInit(): void {
         this._websiteService.navigation$.pipe(
             switchMap(navigation => from(navigation).pipe(
-                first(nav => nav.url === this.route.snapshot.parent?.routeConfig?.path)
+                first(nav => nav.url === this._route.snapshot.parent?.routeConfig?.path)
             )),
             takeUntil(this._destroy)
         ).subscribe(nav => {
-            if (this._id !== nav.id) {
-                this._id = nav.id;
+            if (this.id !== nav.id) {
+                this.id = nav.id;
                 this._update();
             }
         });
 
-        this.route.paramMap.pipe(
+        this._route.paramMap.pipe(
             takeUntil(this._destroy)
         ).subscribe(params => {
             const newsId = params.get('id');
             const newsIdInt = newsId ? parseInt(newsId, 10) : 0;
-            if (this._newsId !== newsIdInt) {
-                this._newsId = newsIdInt;
+            if (this.newsId !== newsIdInt) {
+                this.newsId = newsIdInt;
                 this._update();
             }
         });
@@ -66,7 +64,6 @@ export class NewsItemComponent implements OnInit, OnDestroy {
 
     public ngOnDestroy(): void {
         this._newsItemSubscription?.unsubscribe();
-        this._nextSubscription?.unsubscribe();
         this._destroy.next();
         this._destroy.complete();
     }
@@ -75,23 +72,26 @@ export class NewsItemComponent implements OnInit, OnDestroy {
         return this._newsService.getResponsiveImageUrl(url, responsiveMaxWidth, percentage);
     }
 
-    public getHtml(content: string, contentType: string): SafeHtml {
-        return this._newsService.getHtml(content, contentType);
-    }
-
     private _update(): void {
         this._newsItemSubscription?.unsubscribe();
-        this._nextSubscription?.unsubscribe();
 
         this._websiteService.setLoading(true);
 
-        if (this._id && this._newsId) {
-            this._newsItemSubscription = this._newsService.getNewsItem(this._id, this._newsId).subscribe(newsItem => {
+        if (this.id && this.newsId) {
+            this._newsItemSubscription = this._newsService.getNewsItem(this.id, this.newsId).subscribe(newsItem => {
                 this.newsItem = newsItem;
                 this._websiteService.setLoading(false);
                 if (newsItem) {
-                    if (newsItem.content_type === 'redirect' && newsItem.content) {
+                    if (newsItem.content_type === NewsContentType.Redirect && newsItem.content) {
                         this._locationService.replace(newsItem.content);
+                    }
+                    else {
+                        this.newsItemHtml = this._newsService.getHtml(newsItem.content, newsItem.content_type);
+                        const metadata = this._newsService.getMetadata();
+                        this.category = parseInt(metadata['listid'], 10);
+                        if (metadata['keywords']) {
+                            this._seoService.setKeywords(metadata['keywords']);
+                        }
                     }
                     this._seoService.update({
                         title: newsItem.title,
@@ -101,12 +101,6 @@ export class NewsItemComponent implements OnInit, OnDestroy {
                         utcPublished: newsItem.date
                     });
                 }
-                this._changeDectector.markForCheck();
-            });
-
-            this._nextSubscription = this._newsService.getNext(this._id, this._newsId).subscribe(next => {
-                this.nextItem = next?.next;
-                this.previousItem = next?.previous;
                 this._changeDectector.markForCheck();
             });
         }

@@ -1,20 +1,3 @@
-<ng-container *ngIf="newsItem">
-    <div class="hero">
-        <div class="hero-image" [style.background-image]="newsItem.image ? ('url(' + getResponsiveImageUrl(newsItem.image) + '&full)') : ''"></div>
-        <div class="hero-content">
-            <div class="hero-meta">
-                <span class="post-category" *ngIf="newsItem.categories">
-                    <a href="javascript:;" *ngFor="let category of newsItem.categories" [routerLink]="['']" [queryParams]="{category: category.id}">{{category.name}}</a>
-                </span>
-                <span class="post-time" itemprop="datePublished" *ngIf="newsItem.date" [attr.content]="newsItem.date * 1000 | date:'yyyy-MM-ddTHH:mm:ss.sssZ'">{{newsItem.date * 1000 | date:'EEE d MMMM yyyy'}}</span>
-            </div>
-            <h2 class="hero-title" itemprop="name">{{newsItem.title}}</h2>
-        </div>
-    </div>
-    <div class="news-item hentry clear">
-        <div class="news-content" itemprop="articleBody" [innerHtml]="getHtml(newsItem.content, newsItem.content_type)"></div>
-    </div>
-</ng-container>
 <nav class="post-navigation" role="navigation">
     <div class="previous-post" *ngIf="previousItem">
         <div class="post-navigation-thumbnail" [style.background-image]="previousItem.image ? ('url(' + getResponsiveImageUrl(previousItem.image, 767, 50) + ')') : ''"></div>

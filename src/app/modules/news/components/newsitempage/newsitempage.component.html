@@ -1,0 +1,21 @@
+<ng-container *ngIf="newsItem">
+    <div class="hero">
+        <div class="hero-image" [style.background-image]="newsItem.image ? ('url(' + getResponsiveImageUrl(newsItem.image) + '&full)') : ''"></div>
+        <div class="hero-content">
+            <div class="hero-meta">
+                <span class="post-category" *ngIf="newsItem.categories">
+                    <a href="javascript:;" *ngFor="let category of newsItem.categories" [routerLink]="['']" [queryParams]="{category: category.id}">{{category.name}}</a>
+                </span>
+                <span class="post-time" itemprop="datePublished" *ngIf="newsItem.date" [attr.content]="newsItem.date * 1000 | date:'yyyy-MM-ddTHH:mm:ss.sssZ'">{{newsItem.date * 1000 | date:'EEE d MMMM yyyy'}}</span>
+            </div>
+            <h2 class="hero-title" itemprop="name">{{newsItem.title}}</h2>
+        </div>
+    </div>
+    <div class="news-item hentry clear">
+        <div class="news-content" itemprop="articleBody" [innerHtml]="newsItemHtml"></div>
+    </div>
+</ng-container>
+
+<app-news-list *ngIf="category" [id]="id" [category]="category" class="clear"></app-news-list>
+
+<app-news-next *ngIf="!category" [id]="id" [newsId]="newsId"></app-news-next>
