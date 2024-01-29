@@ -34,7 +34,7 @@ export class WebsiteService {
                 this._seoService.setSiteName(settings.name);
                 this._seoService.setLanguage(settings.language);
                 this._seoService.setSiteDescription(settings.description);
-                this._seoService.setKeywords(settings.keywords);
+                this._seoService.setSiteKeywords(settings.keywords);
             },
             error: () => {}
         });

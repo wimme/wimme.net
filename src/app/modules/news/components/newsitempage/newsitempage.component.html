@@ -16,6 +16,6 @@
     </div>
 </ng-container>
 
-<app-news-list *ngIf="category" [id]="id" [category]="category" class="clear"></app-news-list>
+<app-news-list *ngIf="category" [id]="id" [category]="category" [hide]="newsId" class="clear"></app-news-list>
 
 <app-news-next *ngIf="!category" [id]="id" [newsId]="newsId"></app-news-next>

@@ -11,6 +11,7 @@ export class SeoService {
 
     private _siteName?: string;
     private _siteDescription?: string;
+    private _siteKeywords?: string;
 
     constructor(
         private _titleService: Title,
@@ -33,8 +34,9 @@ export class SeoService {
         }
     }
 
-    public setKeywords(keywords?: string | string[]): void {
+    public setSiteKeywords(keywords?: string | string[]): void {
         const wordsAsString = keywords instanceof Array ? keywords?.join(',') : keywords;
+        this._siteKeywords = wordsAsString;
         if (wordsAsString) {
             this._metaService.updateTag({ name: 'keywords', content: wordsAsString });
         } else {
@@ -65,6 +67,7 @@ export class SeoService {
         this._setTitle(data?.title);
         this._setType(data?.type);
         this._setDescription(data?.description);
+        this._setKeywords(data?.keywords);
         this._setImage(data?.image);
         this._setUrl(data?.url);
         this._setPublished(data?.utcPublished);
@@ -112,6 +115,15 @@ export class SeoService {
         } else {
             this._metaService.removeTag(`property='og:description'`);
             this._metaService.removeTag(`itemprop='description'`);
+        }
+    }
+
+    private _setKeywords(keywords?: string | string[]): void {
+        const wordsAsString = (keywords instanceof Array ? keywords?.join(',') : keywords) || this._siteKeywords;
+        if (wordsAsString) {
+            this._metaService.updateTag({ name: 'keywords', content: wordsAsString });
+        } else {
+            this._metaService.removeTag(`name='keywords'`);
         }
     }
 

@@ -82,21 +82,25 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
                 this.newsItem = newsItem;
                 this._websiteService.setLoading(false);
                 if (newsItem) {
+                    let keywords = '';
                     if (newsItem.content_type === NewsContentType.Redirect && newsItem.content) {
                         this._locationService.replace(newsItem.content);
                     }
                     else {
                         this.newsItemHtml = this._newsService.getHtml(newsItem.content, newsItem.content_type);
-                        const metadata = this._newsService.getMetadata();
-                        this.category = parseInt(metadata['listid'], 10);
-                        if (metadata['keywords']) {
-                            this._seoService.setKeywords(metadata['keywords']);
+                        if (newsItem.content_type === NewsContentType.Markdown) {
+                            const metadata = this._newsService.getMetadata();
+                            if (metadata) {
+                                this.category = parseInt(metadata['listid'], 10);
+                                keywords = metadata['keywords'];
+                            }
                         }
                     }
                     this._seoService.update({
                         title: newsItem.title,
                         type: 'article',
                         description: newsItem.content_preview,
+                        keywords,
                         image: newsItem.image ? this._newsService.getImageUrl(newsItem.image) : '',
                         utcPublished: newsItem.date
                     });
