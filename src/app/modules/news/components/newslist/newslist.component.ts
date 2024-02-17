@@ -25,7 +25,7 @@ export class NewsListComponent implements OnChanges, OnDestroy {
     @Input()
     public category?: number;
     @Input()
-    public hide?: number | number[];
+    public parent?: number;
 
     private _newsSubscription?: Subscription;
     private _pinnedSubscription?: Subscription;
@@ -54,16 +54,6 @@ export class NewsListComponent implements OnChanges, OnDestroy {
         return this._newsService.getHtml(content, contentType);
     }
 
-    private _isHidden(item: News): boolean {
-        if (this.hide instanceof Array && this.hide.includes(item.id)) {
-            return false;
-        }
-        if (this.hide === item.id) {
-            return false;
-        }
-        return true;
-    }
-
     private _update(): void {
         this._newsSubscription?.unsubscribe();
         this._pinnedSubscription?.unsubscribe();
@@ -71,14 +61,14 @@ export class NewsListComponent implements OnChanges, OnDestroy {
         if (this.id) {
             this._websiteService.setLoading(true);
 
-            this._pinnedSubscription = this._newsService.getPinned(this.id, this.category).subscribe(pinned => {
-                this.pinned = pinned?.filter(item => this._isHidden(item));
+            this._pinnedSubscription = this._newsService.getPinned(this.id, this.category, this.parent).subscribe(pinned => {
+                this.pinned = pinned;
                 this._websiteService.setLoading(false);
                 this._changeDectector.markForCheck();
             });
 
-            this._newsSubscription = this._newsService.getNews(this.id, this.category).subscribe(news => {
-                this.news = news?.filter(item => this._isHidden(item));
+            this._newsSubscription = this._newsService.getNews(this.id, this.category, this.parent).subscribe(news => {
+                this.news = news;
                 this._websiteService.setLoading(false);
                 this._changeDectector.markForCheck();
             });

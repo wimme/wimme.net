@@ -9,7 +9,9 @@ export interface News {
     content_type: NewsContentType,
     content_preview: string,
     image: string,
-    categories: Category[]
+    categories: Category[],
+    parent?: number,
+    has_children: boolean
 }
 
 export enum NewsContentType {

@@ -14,6 +14,7 @@ export class NewsNextComponent implements OnChanges, OnDestroy {
 
     public nextItem?: News;
     public previousItem?: News;
+    public parentItem?: News;
 
     @Input()
     public id?: number;
@@ -47,6 +48,7 @@ export class NewsNextComponent implements OnChanges, OnDestroy {
             this._nextSubscription = this._newsService.getNext(this.id, this.newsId).subscribe(next => {
                 this.nextItem = next?.next;
                 this.previousItem = next?.previous;
+                this.parentItem = next?.parent;
                 this._changeDectector.markForCheck();
             });
         }

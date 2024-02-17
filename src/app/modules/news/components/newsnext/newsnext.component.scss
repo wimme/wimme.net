@@ -8,6 +8,14 @@
     color: #fff;
 }
 
+.parent-post {
+	overflow: hidden;
+    position: relative;
+    height: 300px;
+    background-color: #222;
+    margin-bottom: 1px;
+}
+
 .previous-post {
     overflow: hidden;
     position: relative;
@@ -42,6 +50,7 @@
     transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.parent-post:hover .post-navigation-thumbnail,
 .previous-post:hover .post-navigation-thumbnail,
 .next-post:hover .post-navigation-thumbnail {
     opacity: .5;
@@ -60,6 +69,7 @@
     text-align: right;
 }
 
+.parent-post .post-navigation-header,
 .next-post .post-navigation-header {
     left: 45px;
     right: 90px;
@@ -84,6 +94,7 @@
         margin-top: 60px;
     }
 
+	.parent-post,
     .previous-post {
         float: none;
         width: 100%;
@@ -104,6 +115,7 @@
         text-align: left;
     }
 
+	.parent-post .post-navigation-header,
     .next-post .post-navigation-header {
         left: 30px;
         right: 30px;

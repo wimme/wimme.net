@@ -1,4 +1,11 @@
 <nav class="post-navigation" role="navigation">
+    <div class="parent-post" *ngIf="parentItem">
+        <div class="post-navigation-thumbnail" [style.background-image]="parentItem.image ? ('url(' + getResponsiveImageUrl(parentItem.image, 767, 50) + ')') : ''"></div>
+        <div class="post-navigation-header">
+            <div class="post-navigation-subtitle">Deel van</div>
+            <h1 class="post-navigation-title"><a href="javascript:;" [routerLink]="parentItem.url" [relativeTo]="route.parent" rel="prev">{{parentItem.title}}</a></h1>
+        </div>
+    </div>
     <div class="previous-post" *ngIf="previousItem">
         <div class="post-navigation-thumbnail" [style.background-image]="previousItem.image ? ('url(' + getResponsiveImageUrl(previousItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">

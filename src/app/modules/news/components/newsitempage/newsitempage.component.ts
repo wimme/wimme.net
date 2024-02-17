@@ -23,7 +23,6 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
     public newsItemHtml?: SafeHtml;
     public id?: number;
     public newsId?: number;
-    public category?: number;
 
     private _newsItemSubscription?: Subscription;
     private readonly _destroy = new Subject<void>();
@@ -91,7 +90,6 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
                         if (newsItem.content_type === NewsContentType.Markdown) {
                             const metadata = this._newsService.getMetadata();
                             if (metadata) {
-                                this.category = parseInt(metadata['listid'], 10);
                                 keywords = metadata['keywords'];
                             }
                         }
