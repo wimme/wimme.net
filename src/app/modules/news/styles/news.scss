@@ -78,3 +78,18 @@
 	font-weight: normal;
 	content: "\f303";
 }
+
+@media only screen and (max-width: 767px) {
+	.news-header .title {
+		font-size: 32px;
+		line-height: 32px;
+	}
+
+	.post-category a {
+		display: none;
+	}
+
+	.post-category a:last-child {
+		display: inline-block;
+	}
+}
