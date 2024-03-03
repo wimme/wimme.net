@@ -42,6 +42,7 @@ const staticRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot([], {
+        scrollPositionRestoration: 'enabled'
         //initialNavigation: 'enabledBlocking'
     })],
     exports: [RouterModule],
