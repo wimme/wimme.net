@@ -51,14 +51,13 @@ async function getNav(apiUrl) {
     return await sendRequest(apiUrl, 'core', 'getnav', { includeSubNav: true });
 }
 
-function getUrlsFromNav(nav) {
+function getUrlsFromNav(nav, baseUrl) {
     const urls = [];
-    const baseUrl = '/';
     nav.forEach(one => {
         urls.push(baseUrl + one.url);
-        one.sub?.forEach(sub => {
-            urls.push(baseUrl + sub.url);
-        });
+        if (one.sub) {
+            urls.push(...getUrlsFromNav(one.sub, baseUrl));
+        }
     });
     return urls;
 }
@@ -67,7 +66,7 @@ async function run() {
     const hostname = process.argv.slice(2)[0];
     const apiUrl = `https://cms.${hostname}/system/json/`;
     const nav = await getNav(apiUrl);
-    const urls = getUrlsFromNav(nav);
+    const urls = getUrlsFromNav(nav, '/');
     writeToFile('routes.txt', urls.join('\n'));
     process.env['HOSTNAME'] = hostname; // used in app.server.module.ts
 
