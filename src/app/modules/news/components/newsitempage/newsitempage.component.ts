@@ -71,6 +71,15 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
         return this._newsService.getResponsiveImageUrl(url, responsiveMaxWidth, percentage);
     }
 
+    public getImageUrl(url: string): string {
+        if (url) {
+            // for image proxy: cached image could be a smaller size
+            // refetch the image by adding an url parameter
+            return url + (url.includes('?') ? '&' : '?') + 'full';
+        }
+        return '';
+    }
+
     private _update(): void {
         this._newsItemSubscription?.unsubscribe();
 

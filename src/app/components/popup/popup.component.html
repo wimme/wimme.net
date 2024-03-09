@@ -1,7 +1,7 @@
 <div class="popup" tabindex="-1">
     <div class="popup-outer">
         <div class="popup-inner">
-            <img class="popup-image" [src]="image + '&full'" [alt]="caption" [style.max-height]="maxHeight" sizes="100vw" />
+            <img class="popup-image" [src]="getImageUrl(image)" [alt]="caption" [style.max-height]="maxHeight" sizes="100vw" />
             <a title="Previous" class="popup-nav popup-prev" href="javascript:;" (click)="showPrevious($event)"><span></span></a>
             <a title="Next" class="popup-nav popup-next" href="javascript:;" (click)="showNext($event)"><span></span></a>
             <div class="popup-title">{{caption}}</div>

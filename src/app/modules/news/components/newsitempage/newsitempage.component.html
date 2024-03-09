@@ -1,6 +1,6 @@
 <ng-container *ngIf="newsItem">
     <div class="hero">
-        <div class="hero-image" [style.background-image]="newsItem.image ? ('url(' + getResponsiveImageUrl(newsItem.image) + '&full)') : ''"></div>
+        <div class="hero-image" [style.background-image]="newsItem.image ? ('url(' + getImageUrl(getResponsiveImageUrl(newsItem.image)) + ')') : ''"></div>
         <div class="hero-content">
             <div class="hero-meta">
                 <span class="post-category" *ngIf="newsItem.categories">

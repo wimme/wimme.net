@@ -86,4 +86,13 @@ export class PopupComponent {
         }
     }
 
+    public getImageUrl(url: string): string {
+        if (url) {
+            // for image proxy: cached image could be a smaller size
+            // refetch the image by adding an url parameter
+            return url + (url.includes('?') ? '&' : '?') + 'full';
+        }
+        return '';
+    }
+
 }
