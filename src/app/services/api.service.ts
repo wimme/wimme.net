@@ -22,7 +22,7 @@ export class ApiService {
 
     public get<T>(module: string, action: string, params?: { [key: string]: unknown }): Observable<T> {
         const host = this._locationService.hostname;
-        const api = (isDevMode() && isPlatformBrowser(this._platformId)) ? '/system/json/' : `https://cms.${host}/system/json/`;
+        const api = (isDevMode() && isPlatformBrowser(this._platformId)) ? '/system/json/' : `https://${host}/system/json/`;
         const data = { module, action, params };
         return this._httpClient.post<T>(api, data, this._httpOptions).pipe(
             catchError(this._handleError<T>())

@@ -83,7 +83,7 @@ export class ContactComponent implements OnInit {
 
     public getCaptchaUrl(): string {
         const host = this._locationService.hostname;
-        return `https://cms.${host}/system/captcha.php`;
+        return `https://${host}/system/captcha.php`;
     }
 
 }

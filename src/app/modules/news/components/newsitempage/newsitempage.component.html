@@ -4,11 +4,11 @@
         <div class="hero-content">
             <div class="hero-meta">
                 <span class="post-category" *ngIf="newsItem.categories">
-                    <a href="javascript:;" *ngFor="let category of newsItem.categories" [routerLink]="['']" [queryParams]="{category: category.id}">{{category.name}}</a>
+                    <a href="javascript:;" *ngFor="let category of newsItem.categories" [routerLink]="['']" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
                 </span>
                 <span class="post-time" itemprop="datePublished" *ngIf="newsItem.date" [attr.content]="newsItem.date * 1000 | date:'yyyy-MM-ddTHH:mm:ss.sssZ'">{{newsItem.date * 1000 | date:'EEE d MMMM yyyy'}}</span>
             </div>
-            <h2 class="hero-title" itemprop="name">{{newsItem.title}}</h2>
+            <h1 class="hero-title" itemprop="name">{{newsItem.title}}</h1>
         </div>
     </div>
     <div class="news-item hentry clear">

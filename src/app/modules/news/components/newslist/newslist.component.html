@@ -4,7 +4,7 @@
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">
-                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}">{{category.name}}</a>
+                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
                 </span>
                 <span class="post-time" *ngIf="item.date">{{item.date * 1000 | date:'d MMM yyyy'}}</span>
             </div>
@@ -17,7 +17,7 @@
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">
-                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}">{{category.name}}</a>
+                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
                 </span>
                 <span class="post-time" itemprop="datePublished" *ngIf="item.date" [attr.content]="item.date * 1000 | date:'yyyy-MM-ddTHH:mm:ss.sssZ'">{{item.date * 1000 | date:'d MMM yyyy'}}</span>
             </div>
