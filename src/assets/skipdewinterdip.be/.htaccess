@@ -64,12 +64,12 @@ DirectoryIndex index.php index.html
   RewriteRule ^(.*[^/])$ /$1/ [L,END]
 
   # Redirection of requests to index.html
-  # (Not needed when using Angular Universal prerender, we want real 404 http responses for SEO)
-  #RewriteCond %{REQUEST_FILENAME} !-f
-  #RewriteCond %{REQUEST_FILENAME} !-d
-  #RewriteCond %{REQUEST_URI} !=/favicon.ico
-  #RewriteCond %{REQUEST_URI} !=/robots.txt
-  #RewriteRule ^ index.html [L]
+  # (Through a php script, we want real 404 http responses for SEO)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteCond %{REQUEST_URI} !=/robots.txt
+  RewriteRule ^ rewrite/index.php [L]
 
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.

@@ -33,6 +33,7 @@
               "src/robots.txt",
               { "glob": "**", "input": "src/assets/wimme.net", "output": "/" },
               "src/feed",
+              "src/rewrite",
               "src/sitemap"
             ],
             "styles": [
@@ -80,6 +81,7 @@
                 "src/robots.txt",
                 { "glob": "**", "input": "src/assets/skipdewinterdip.be", "output": "/" },
                 "src/feed",
+                "src/rewrite",
                 "src/sitemap"
               ]
             },
