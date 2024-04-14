@@ -1,11 +1,11 @@
 <IfModule mod_headers.c>
   # Apply some more security.
   Header set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
-  Header set Content-Security-Policy: "default-src 'none'; script-src analytics.wimme.net 'self' 'unsafe-inline' 'unsafe-eval'; connect-src analytics.wimme.net 'self'; img-src img.skipdewinterdip.be data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
+  Header set Content-Security-Policy: "default-src 'none'; script-src analytics.wimme.net 'self' 'unsafe-inline' 'unsafe-eval'; connect-src analytics.wimme.net 'self'; img-src img.vakantievibes.be data: 'self'; style-src fonts.googleapis.com 'self' 'unsafe-inline'; object-src 'self'; media-src 'self'; font-src fonts.gstatic.com data: 'self'; frame-src 'self'"
 
   # Request client hints for image proxy.
   Header set Accept-CH: "Sec-CH-Viewport-Width, Sec-CH-Width, Sec-CH-DPR"
-  Header set Permissions-Policy: "ch-viewport-width=(self \"https://img.skipdewinterdip.be\"), ch-width=(self \"https://img.skipdewinterdip.be\"), ch-dpr=(self \"https://img.skipdewinterdip.be\")"
+  Header set Permissions-Policy: "ch-viewport-width=(self \"https://img.vakantievibes.be\"), ch-width=(self \"https://img.vakantievibes.be\"), ch-dpr=(self \"https://img.vakantievibes.be\")"
 </IfModule>
 
 # Don't show directory listings for URLs which map to a directory.
@@ -41,8 +41,8 @@ DirectoryIndex index.php index.html
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
   # Proxy to backend:
-  RewriteRule ^system/(.*)$ https://cms.skipdewinterdip.be/system/$1 [P]
-  #RewriteRule ^feed/(.*)$ https://cms.skipdewinterdip.be/feed/$1 [P]
+  RewriteRule ^system/(.*)$ https://cms.vakantievibes.be/system/$1 [P]
+  #RewriteRule ^feed/(.*)$ https://cms.vakantievibes.be/feed/$1 [P]
 
   # Prevent mod_dir appending trailing slash to directories (required for Angular Universal prerender)
   DirectorySlash Off

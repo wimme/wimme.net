@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:skipdewinterdip.be": "ng build --c=production-skipdewinterdip.be",
+    "build:vakantievibes.be": "ng build --c=production-vakantievibes.be",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run wimme.net:serve-ssr",
@@ -13,7 +13,7 @@
     "build:ssr": "ng build && ng run wimme.net:server",
     "prerender": "ng run wimme.net:prerender",
     "prerender:wimme.net": "node prerender.mjs wimme.net",
-    "prerender:skipdewinterdip.be": "node prerender.mjs skipdewinterdip.be"
+    "prerender:vakantievibes.be": "node prerender.mjs vakantievibes.be"
   },
   "private": true,
   "dependencies": {

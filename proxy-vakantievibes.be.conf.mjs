@@ -3,7 +3,7 @@ export default [
     context: [
         '/system/'
     ],
-    target: 'https://cms.skipdewinterdip.be',
+    target: 'https://cms.vakantievibes.be',
     secure: false,
     changeOrigin: true,
     logLevel: "debug"

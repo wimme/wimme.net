@@ -5,8 +5,8 @@ $host = '';
 if(str_ends_with($_SERVER['SERVER_NAME'], 'wimme.net')) {
     $host = 'wimme.net';
 }
-else if(str_ends_with($_SERVER['SERVER_NAME'], 'skipdewinterdip.be')) {
-    $host = 'skipdewinterdip.be';
+else if(str_ends_with($_SERVER['SERVER_NAME'], 'vakantievibes.be')) {
+    $host = 'vakantievibes.be';
 }
 else {
     header($_SERVER['SERVER_PROTOCOL'].' 400 Bad Request');

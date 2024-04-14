@@ -36,7 +36,7 @@ function getMatomoSiteId(location: Location): string | number {
     switch (location.hostname) {
         case 'wimme.net':
             return '1';
-        case 'skipdewinterdip.be':
+        case 'vakantievibes.be':
             return '2';
     }
     return '';

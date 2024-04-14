@@ -58,7 +58,7 @@
               ],
               "outputHashing": "all"
             },
-            "production-skipdewinterdip.be": {
+            "production-vakantievibes.be": {
               "budgets": [
                 {
                   "type": "initial",
@@ -73,13 +73,13 @@
               ],
               "outputHashing": "all",
               "index": {
-                "input": "src/index-skipdewinterdip.be.html",
+                "input": "src/index-vakantievibes.be.html",
                 "output": "index.html"
               },
               "assets": [
                 "src/favicon.ico",
                 "src/robots.txt",
-                { "glob": "**", "input": "src/assets/skipdewinterdip.be", "output": "/" },
+                { "glob": "**", "input": "src/assets/vakantievibes.be", "output": "/" },
                 "src/feed",
                 "src/rewrite",
                 "src/sitemap"
@@ -181,8 +181,8 @@
               "browserTarget": "wimme.net:build:production",
               "serverTarget": "wimme.net:server:production"
             },
-            "production-skipdewinterdip.be": {
-              "browserTarget": "wimme.net:build:production-skipdewinterdip.be",
+            "production-vakantievibes.be": {
+              "browserTarget": "wimme.net:build:production-vakantievibes.be",
               "serverTarget": "wimme.net:server:production"
             },
             "development": {
