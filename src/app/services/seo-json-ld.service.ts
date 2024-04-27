@@ -4,7 +4,7 @@ import { LocationService } from './location.service';
 import { SeoItem } from '../interfaces/seoitem';
 
 interface JsonLd {
-    [param: string]: string | Record<string, string> | JsonLd | JsonLd[] | undefined;
+    [param: string]: string | string[] | Record<string, string> | JsonLd | JsonLd[] | undefined;
 }
 
 @Injectable({
@@ -17,10 +17,10 @@ export class SeoJsonLdService {
         @Inject(DOCUMENT) private _document: Document) {
     }
 
-    public update(siteName?: string, siteDescription?: string, data?: SeoItem): void {
+    public update(siteName?: string, siteDescription?: string, siteSameAs?: string[], data?: SeoItem): void {
         this._inject(this._generateSchema([
-            this._websiteSchema(siteName, siteDescription),
-            data?.type === 'article' ? this._articleSchema(data?.title || siteName, data?.description, data?.image, data?.utcPublished, data?.author) : this._webpageSchema(data?.title || siteName, data?.description, data?.image)
+            this._websiteSchema(siteName, siteDescription, siteSameAs),
+            data?.type === 'article' ? this._articleSchema(data?.title || siteName, data?.description, data?.image, data?.utcPublished, data?.utcModified, data?.author) : this._webpageSchema(data?.title || siteName, data?.description, data?.image)
         ]));
     }
 
@@ -48,13 +48,14 @@ export class SeoJsonLdService {
         };
     }
 
-    private _websiteSchema(name?: string, description?: string): JsonLd {
+    private _websiteSchema(name?: string, description?: string, sameAs?: string[]): JsonLd {
         return {
             '@type': 'WebSite',
             '@id': `${this._locationService.origin}/#website`,
             url: this._locationService.origin,
             name: name,
-            description: description
+            description: description,
+            sameAs: sameAs
         };
     }
 
@@ -71,13 +72,14 @@ export class SeoJsonLdService {
         };
     }
 
-    private _articleSchema(title?: string, description?: string, image?: string, utcPublished?: number, author?: string): JsonLd {
+    private _articleSchema(title?: string, description?: string, image?: string, utcPublished?: number, utcModified?: number, author?: string): JsonLd {
         return {
             '@type': 'NewsArticle',
             url: this._locationService.href,
             headline: title,
             image: image,
             datePublished: utcPublished ? (new Date(utcPublished * 1000)).toISOString() : '',
+            dateModified: utcModified ? (new Date(utcModified * 1000)).toISOString() : '',
             description: description,
             isPartOf: {
                 '@id': `${this._locationService.origin}/#website`

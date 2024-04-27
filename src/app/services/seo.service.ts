@@ -12,6 +12,7 @@ export class SeoService {
     private _siteName?: string;
     private _siteDescription?: string;
     private _siteKeywords?: string;
+    private _siteSameAs?: string[];
 
     constructor(
         private _titleService: Title,
@@ -44,6 +45,10 @@ export class SeoService {
         }
     }
 
+    public setSiteSameAs(sameAs?: string[]): void {
+        this._siteSameAs = sameAs;
+    }
+
     public setSiteName(siteName?: string) {
         this._siteName = siteName;
         if (siteName) {
@@ -73,7 +78,7 @@ export class SeoService {
         this._setPublished(data?.utcPublished);
         this._setModified(data?.utcModified);
         this._setAuthor(data?.author);
-        this._jsonLdService.update(this._siteName, this._siteDescription, data);
+        this._jsonLdService.update(this._siteName, this._siteDescription, this._siteSameAs, data);
     }
 
     private _setSection(section?: string): void {
@@ -109,10 +114,12 @@ export class SeoService {
     }
 
     private _setDescription(description?: string): void {
-        if (description && description.length) {
+        if (description) {
+            this._metaService.updateTag({ name: 'description', content: description });
             this._metaService.updateTag({ property: 'og:description', content: description });
             this._metaService.updateTag({ itemprop: 'description', content: description }, `itemprop='description'`);
         } else {
+            this._metaService.removeTag(`name='description'`);
             this._metaService.removeTag(`property='og:description'`);
             this._metaService.removeTag(`itemprop='description'`);
         }
@@ -128,7 +135,7 @@ export class SeoService {
     }
 
     private _setImage(image?: string): void {
-        if (image && image.length) {
+        if (image) {
             this._metaService.updateTag({ itemprop: 'image', content: image }, `itemprop='image'`);
             this._metaService.updateTag({ property: 'og:image', content: image });
         } else {
@@ -138,7 +145,7 @@ export class SeoService {
     }
 
     private _setUrl(url?: string): void {
-        if (url && url.length) {
+        if (url) {
             this._metaService.updateTag({ property: 'og:url', content: url });
         } else {
             this._metaService.removeTag(`property='og:url'`);
@@ -169,7 +176,7 @@ export class SeoService {
     }
 
     private _setAuthor(author?: string): void {
-        if (author && author.length) {
+        if (author) {
             this._metaService.updateTag({ name: 'article:author', content: author });
             this._metaService.updateTag({ name: 'author', content: author });
         } else {
@@ -186,7 +193,7 @@ export class SeoService {
             this._document.head.removeChild(canonicalElement);
         }
 
-        if (url && url.length) {
+        if (url) {
             const link: HTMLLinkElement = this._document.createElement('link');
             link.setAttribute('rel', 'canonical');
             link.setAttribute('href', url);

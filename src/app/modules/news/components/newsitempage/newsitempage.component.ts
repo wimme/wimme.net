@@ -109,7 +109,8 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
                         description: newsItem.content_preview,
                         keywords,
                         image: newsItem.image ? this._newsService.getImageUrl(newsItem.image) : '',
-                        utcPublished: newsItem.date
+                        utcPublished: newsItem.date,
+                        utcModified: newsItem.date_lastupdated
                     });
                 }
                 this._changeDectector.markForCheck();

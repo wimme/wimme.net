@@ -4,6 +4,7 @@ export interface News {
     id: number,
     title: string,
     date: number,
+    date_lastupdated: number,
     url: string,
     content: string,
     content_type: NewsContentType,

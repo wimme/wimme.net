@@ -35,6 +35,7 @@ export class WebsiteService {
                 this._seoService.setLanguage(settings.language);
                 this._seoService.setSiteDescription(settings.description);
                 this._seoService.setSiteKeywords(settings.keywords);
+                this._seoService.setSiteSameAs(settings.socials?.map(s => s.url));
             },
             error: () => {}
         });
