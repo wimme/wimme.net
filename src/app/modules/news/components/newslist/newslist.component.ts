@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges
 import { SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CategoryItem } from '../../../../interfaces/categoryitem';
 import { WebsiteService } from '../../../../services/website.service';
 import { News, NewsContentType } from '../../interfaces/news';
 import { NewsService } from '../../services/news.service';
@@ -19,6 +20,7 @@ export class NewsListComponent implements OnChanges, OnDestroy {
 
     public news?: News[];
     public pinned?: News[];
+    public categories?: CategoryItem[];
 
     @Input()
     public id?: number;
@@ -29,10 +31,11 @@ export class NewsListComponent implements OnChanges, OnDestroy {
 
     private _newsSubscription?: Subscription;
     private _pinnedSubscription?: Subscription;
+    private _categoriesSubscription?: Subscription;
 
     constructor(
         public route: ActivatedRoute,
-        private _changeDectector: ChangeDetectorRef,
+        private _changeDetector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService
     ) { }
@@ -42,8 +45,7 @@ export class NewsListComponent implements OnChanges, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this._newsSubscription?.unsubscribe();
-        this._pinnedSubscription?.unsubscribe();
+        this._unsubscribe();
     }
 
     public getResponsiveImageUrl(url: string, responsiveMaxWidth?: number, percentage?: number): string {
@@ -54,23 +56,37 @@ export class NewsListComponent implements OnChanges, OnDestroy {
         return this._newsService.getHtml(content, contentType);
     }
 
-    private _update(): void {
+    public getCategory(categoryId: number): CategoryItem | undefined {
+        return this.categories?.find(one => one.id === categoryId);
+    }
+
+    private _unsubscribe(): void {
         this._newsSubscription?.unsubscribe();
         this._pinnedSubscription?.unsubscribe();
+        this._categoriesSubscription?.unsubscribe();
+    }
+
+    private _update(): void {
+        this._unsubscribe();
 
         if (this.id) {
             this._websiteService.setLoading(true);
 
-            this._pinnedSubscription = this._newsService.getPinned(this.id, this.category, this.parent).subscribe(pinned => {
-                this.pinned = pinned;
-                this._websiteService.setLoading(false);
-                this._changeDectector.markForCheck();
+            this._pinnedSubscription = this._newsService.getPinned(this.id, undefined, this.parent).subscribe(pinned => {
+                this.pinned = pinned || [];
+                if (this.news) this._websiteService.setLoading(false);
+                this._changeDetector.markForCheck();
             });
 
-            this._newsSubscription = this._newsService.getNews(this.id, this.category, this.parent).subscribe(news => {
-                this.news = news;
-                this._websiteService.setLoading(false);
-                this._changeDectector.markForCheck();
+            this._newsSubscription = this._newsService.getNews(this.id, this.category, this.parent, this.id === 1).subscribe(news => {
+                this.news = news || [];
+                if (this.pinned) this._websiteService.setLoading(false);
+                this._changeDetector.markForCheck();
+            });
+
+            this._categoriesSubscription = this._websiteService.categories$.subscribe(categories => {
+                this.categories = categories;
+                this._changeDetector.markForCheck();
             });
         }
     }

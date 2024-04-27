@@ -13,6 +13,7 @@
     </div>
     <div class="news-item hentry clear">
         <div class="news-content" itemprop="articleBody" [innerHtml]="newsItemHtml"></div>
+        <div *ngIf="!newsItem.has_children" class="news-footer">Laatst aangepast op: {{newsItem.date_lastupdated * 1000 | date:'d MMMM yyyy'}}</div>
     </div>
     <app-news-list *ngIf="newsItem.has_children" [id]="id" [parent]="newsItem.id" class="clear"></app-news-list>
     <app-news-next *ngIf="!newsItem.has_children" [id]="id" [newsId]="newsItem.id"></app-news-next>

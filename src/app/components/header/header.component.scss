@@ -1,19 +1,29 @@
 .site-header {
-	position: relative;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
 	padding: 30px;
-	background-color: #fff;
 }
 
 /* Logo ------------------------------*/
 
-.site-logo {
-	float: left;
-}
-
 .logo-text {
-	color: #505050;
+	color: #ffffff;
 	font-size: 24px;
 	font-weight: 700;
+}
+
+.logo-image {
+	display: inline-block;
+	width: 400px;
+	max-width: 80%;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 20%;
+	text-indent: -1000px;
 }
 
 /* Menu toggle -----------------------*/

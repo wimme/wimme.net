@@ -66,12 +66,12 @@ export class NewsService {
         return this._markdownConverter.getMetadata() as Showdown.Metadata;
     }
 
-    public getPinned(id: number, category?: number, parent?: number): Observable<News[]> {
-        return this._apiService.get<News[]>('news', 'getpinned', { id, category, parent });
+    public getPinned(id: number, category?: number, parent?: number, includeAll?: boolean): Observable<News[]> {
+        return this._apiService.get<News[]>('news', 'getpinned', { id, category, parent, includeAll });
     }
 
-    public getNews(id: number, category?: number, parent?: number): Observable<News[]> {
-        return this._apiService.get<News[]>('news', 'getnews', { id, category, parent });
+    public getNews(id: number, category?: number, parent?: number, includeAll?: boolean): Observable<News[]> {
+        return this._apiService.get<News[]>('news', 'getnews', { id, category, parent, includeAll });
     }
 
     public getNewsItem(id: number, newsId: number): Observable<News> {

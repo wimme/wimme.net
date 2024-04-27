@@ -105,6 +105,10 @@
             "development": {
               "proxyConfig": "proxy-wimme.net.conf.mjs",
               "buildTarget": "wimme.net:build:development"
+            },
+            "development-vakantievibes.be": {
+              "proxyConfig": "proxy-vakantievibes.be.conf.mjs",
+              "buildTarget": "wimme.net:build:development"
             }
           },
           "defaultConfiguration": "development"

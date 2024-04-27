@@ -12,8 +12,16 @@ nav a {
 	color: #505050;
 }
 
+:host.site-header-navigation nav a {
+	color: #ffffff;
+}
+
 nav a:hover {
 	color: #bcbcbc;
+}
+
+:host.site-header-navigation nav a:hover {
+	color: #e4c05c;
 }
 
 nav .current-menu-item > a {

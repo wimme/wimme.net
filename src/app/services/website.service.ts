@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, filter, Observable, shareReplay } from 'rxjs';
+import { CategoryItem } from '../interfaces/categoryitem';
 import { NavigationItem } from '../interfaces/navigationitem';
 import { Settings } from '../interfaces/settings';
 import { ApiService } from './api.service';
@@ -14,6 +15,7 @@ export class WebsiteService {
     public readonly showSidebar$ = new BehaviorSubject<boolean>(false);
     public readonly isLoading$ = new BehaviorSubject<boolean>(false);
     public readonly navigation$: Observable<NavigationItem[]>;
+    public readonly categories$: Observable<CategoryItem[]>;
     public readonly settings$: Observable<Settings>;
 
     constructor(
@@ -28,6 +30,7 @@ export class WebsiteService {
             this._seoService.clear();
         });
         this.navigation$ = this._apiService.get<NavigationItem[]>('core', 'getnav').pipe(shareReplay(1));
+        this.categories$ = this._apiService.get<CategoryItem[]>('news', 'getcategories').pipe(shareReplay(1));
         this.settings$ = this._apiService.get<Settings>('core', 'getsettings').pipe(shareReplay(1));
         this.settings$.subscribe({
             next: settings => {

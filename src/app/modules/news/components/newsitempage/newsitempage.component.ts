@@ -29,7 +29,7 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
 
     constructor(
         private _route: ActivatedRoute,
-        private _changeDectector: ChangeDetectorRef,
+        private _changeDetector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _newsService: NewsService,
         private _seoService: SeoService,
@@ -113,7 +113,7 @@ export class NewsItemPageComponent implements OnInit, OnDestroy {
                         utcModified: newsItem.date_lastupdated
                     });
                 }
-                this._changeDectector.markForCheck();
+                this._changeDetector.markForCheck();
             });
         }
     }

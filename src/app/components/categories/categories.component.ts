@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { ApiService } from '../../services/api.service';
 import { WebsiteService } from '../../services/website.service';
 import { CategoryItem } from '../../interfaces/categoryitem';
 
@@ -15,12 +14,11 @@ export class CategoriesComponent implements OnInit {
     public categories$!: Observable<CategoriesTreeItem[]>;
 
     constructor(
-        private _websiteService: WebsiteService,
-        private _apiService: ApiService
+        private _websiteService: WebsiteService
     ) { }
 
     public ngOnInit(): void {
-        this.categories$ = this._apiService.get<CategoryItem[]>('news', 'getcategories').pipe(
+        this.categories$ = this._websiteService.categories$.pipe(
             map(data => this._convertToTree(data))
         );
     }

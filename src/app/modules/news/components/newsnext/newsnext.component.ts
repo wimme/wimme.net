@@ -25,7 +25,7 @@ export class NewsNextComponent implements OnChanges, OnDestroy {
 
     constructor(
         public route: ActivatedRoute,
-        private _changeDectector: ChangeDetectorRef,
+        private _changeDetector: ChangeDetectorRef,
         private _newsService: NewsService
     ) { }
 
@@ -49,7 +49,7 @@ export class NewsNextComponent implements OnChanges, OnDestroy {
                 this.nextItem = next?.next;
                 this.previousItem = next?.previous;
                 this.parentItem = next?.parent;
-                this._changeDectector.markForCheck();
+                this._changeDetector.markForCheck();
             });
         }
     }

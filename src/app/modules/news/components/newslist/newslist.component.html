@@ -1,28 +1,33 @@
-<ul id="newsfeed" class="news-feed">
+<ul class="news-feed pinned" *ngIf="pinned?.length">
     <li *ngFor="let item of pinned" [id]="'news-' + item.id" class="pinned news-item">
         <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getResponsiveImageUrl(item.image, 767, 50) + ')') : ''"></div>
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">
-                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
+                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['/']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
                 </span>
                 <span class="post-time" *ngIf="item.date">{{item.date * 1000 | date:'d MMM yyyy'}}</span>
             </div>
-            <h3 class="title"><a href="javascript:;" [routerLink]="item.url" [relativeTo]="route.parent">{{item.title}}</a></h3>
+            <h3 class="title"><a href="javascript:;" [routerLink]="'/' + item.url" [relativeTo]="route.parent">{{item.title}}</a></h3>
+            <div class="news-content" [innerHtml]="getHtml(item.content, item.content_type)"></div>
         </div>
-        <div class="news-content" [innerHtml]="getHtml(item.content, item.content_type)"></div>
     </li>
+</ul>
+<div *ngIf="category" class="hentry clear">
+    <h2>{{getCategory(category)?.name}}</h2>
+</div>
+<ul class="news-feed">
     <li *ngFor="let item of news" [id]="'news-' + item.id" class="news-item" itemscope itemtype="http://schema.org/Article">
         <div class="news-thumbnail" [style.background-image]="item.image ? ('url(' + getResponsiveImageUrl(item.image, 767, 50) + ')') : ''"></div>
         <div class="news-header">
             <div class="news-meta">
                 <span class="post-category" *ngIf="item.categories">
-                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
+                    <a href="javascript:;" *ngFor="let category of item.categories" [routerLink]="['/']" [relativeTo]="route.parent" [queryParams]="{category: category.id}" rel="nofollow">{{category.name}}</a>
                 </span>
                 <span class="post-time" itemprop="datePublished" *ngIf="item.date" [attr.content]="item.date * 1000 | date:'yyyy-MM-ddTHH:mm:ss.sssZ'">{{item.date * 1000 | date:'d MMM yyyy'}}</span>
             </div>
-            <h3 class="title" itemprop="name"><a href="javascript:;" [routerLink]="item.url" [relativeTo]="route.parent">{{item.title}}</a></h3>
+            <h3 class="title" itemprop="name"><a href="javascript:;" [routerLink]="'/' + item.url" [relativeTo]="route.parent">{{item.title}}</a></h3>
+            <div class="news-content" itemprop="articleBody" [innerHtml]="getHtml(item.content, item.content_type)"></div>
         </div>
-        <div class="news-content" itemprop="articleBody" [innerHtml]="getHtml(item.content, item.content_type)"></div>
     </li>
 </ul>

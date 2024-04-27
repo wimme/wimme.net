@@ -19,7 +19,7 @@ export class NewsListPageComponent implements OnInit, OnDestroy {
 
     constructor(
         private _route: ActivatedRoute,
-        private _changeDectector: ChangeDetectorRef,
+        private _changeDetector: ChangeDetectorRef,
         private _websiteService: WebsiteService,
         private _seoService: SeoService
     ) { }
@@ -37,7 +37,7 @@ export class NewsListPageComponent implements OnInit, OnDestroy {
                     title: nav.url ? nav.name : '',
                     type: 'website'
                 });
-                this._changeDectector.markForCheck();
+                this._changeDetector.markForCheck();
             }
         });
 
@@ -48,7 +48,7 @@ export class NewsListPageComponent implements OnInit, OnDestroy {
             const categoryInt = category ? parseInt(category, 10) : undefined;
             if (this.category !== categoryInt) {
                 this.category = categoryInt;
-                this._changeDectector.markForCheck();
+                this._changeDetector.markForCheck();
             }
         });
     }

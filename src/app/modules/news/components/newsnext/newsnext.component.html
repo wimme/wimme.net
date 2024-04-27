@@ -3,21 +3,21 @@
         <div class="post-navigation-thumbnail" [style.background-image]="parentItem.image ? ('url(' + getResponsiveImageUrl(parentItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">
             <div class="post-navigation-subtitle">Deel van</div>
-            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="parentItem.url" [relativeTo]="route.parent">{{parentItem.title}}</a></h3>
+            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="'/' + parentItem.url" [relativeTo]="route.parent">{{parentItem.title}}</a></h3>
         </div>
     </div>
     <div class="previous-post" *ngIf="previousItem && previousItem.id !== parentItem?.id">
         <div class="post-navigation-thumbnail" [style.background-image]="previousItem.image ? ('url(' + getResponsiveImageUrl(previousItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">
             <div class="post-navigation-subtitle">Vorige post</div>
-            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="previousItem.url" [relativeTo]="route.parent" rel="prev">{{previousItem.title}}</a></h3>
+            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="'/' + previousItem.url" [relativeTo]="route.parent" rel="prev">{{previousItem.title}}</a></h3>
         </div>
     </div>
     <div class="next-post" *ngIf="nextItem && nextItem.id !== parentItem?.id">
         <div class="post-navigation-thumbnail" [style.background-image]="nextItem.image ? ('url(' + getResponsiveImageUrl(nextItem.image, 767, 50) + ')') : ''"></div>
         <div class="post-navigation-header">
             <div class="post-navigation-subtitle">Volgende post</div>
-            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="nextItem.url" [relativeTo]="route.parent" rel="next">{{nextItem.title}}</a></h3>
+            <h3 class="post-navigation-title"><a href="javascript:;" [routerLink]="'/' + nextItem.url" [relativeTo]="route.parent" rel="next">{{nextItem.title}}</a></h3>
         </div>
     </div>
 </nav>
