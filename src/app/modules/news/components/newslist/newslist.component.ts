@@ -97,10 +97,6 @@ export class NewsListComponent implements OnChanges, OnDestroy {
     private _finishLoading(contentId: number): void {
         if (!this.news || !this.pinned)
             return;
-        if ((this.news.length && this.pinned.length) || this.parent) {
-            this._websiteService.setLoading(false);
-            return;
-        }
         // always have at least one pinned item
         if (this.news.length && !this.pinned.length && !this.parent) {
             // take a parent
@@ -128,6 +124,8 @@ export class NewsListComponent implements OnChanges, OnDestroy {
                 }
                 this._changeDetector.markForCheck();
             });
+        } else {
+            this._websiteService.setLoading(false);
         }
     }
 
