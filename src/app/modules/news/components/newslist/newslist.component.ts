@@ -68,24 +68,64 @@ export class NewsListComponent implements OnChanges, OnDestroy {
 
     private _update(): void {
         this._unsubscribe();
+        this.news = undefined;
+        this.pinned = undefined;
 
-        if (this.id) {
+        const contentId = this.id;
+        if (contentId) {
             this._websiteService.setLoading(true);
 
-            this._pinnedSubscription = this._newsService.getPinned(this.id, undefined, this.parent).subscribe(pinned => {
+            this._pinnedSubscription = this._newsService.getPinned(contentId, this.category, this.parent).subscribe(pinned => {
                 this.pinned = pinned || [];
-                if (this.news) this._websiteService.setLoading(false);
+                this._finishLoading(contentId);
                 this._changeDetector.markForCheck();
             });
 
-            this._newsSubscription = this._newsService.getNews(this.id, this.category, this.parent, this.id === 1).subscribe(news => {
+            this._newsSubscription = this._newsService.getNews(contentId, this.category, this.parent, this.id === 1).subscribe(news => {
                 this.news = news || [];
-                if (this.pinned) this._websiteService.setLoading(false);
+                this._finishLoading(contentId);
                 this._changeDetector.markForCheck();
             });
 
             this._categoriesSubscription = this._websiteService.categories$.subscribe(categories => {
                 this.categories = categories;
+                this._changeDetector.markForCheck();
+            });
+        }
+    }
+
+    private _finishLoading(contentId: number): void {
+        if (!this.news || !this.pinned)
+            return;
+        if ((this.news.length && this.pinned.length) || this.parent) {
+            this._websiteService.setLoading(false);
+            return;
+        }
+        // always have at least one pinned item
+        if (this.news.length && !this.pinned.length && !this.parent) {
+            // take a parent
+            const parents = this.news.filter(news => news.has_children);
+            if (parents.length === 1) {
+                let setPinnedIdx = this.news.indexOf(parents[0]);
+                if (setPinnedIdx >= 0) {
+                    const setPinned = this.news[setPinnedIdx];
+                    this.news.splice(setPinnedIdx, 1);
+                    this.pinned.push(setPinned);
+                    this._websiteService.setLoading(false);
+                    return;
+                }
+            }
+            // take pinned from root
+            this._pinnedSubscription?.unsubscribe();
+            this._pinnedSubscription = this._newsService.getPinned(contentId, undefined, this.parent).subscribe(pinned => {
+                this.pinned = pinned || [];
+                this._websiteService.setLoading(false);
+                if(this.news?.length && !this.pinned.length && !this.parent) {
+                    // take first item
+                    const setPinned = this.news[0];
+                    this.news.splice(0, 1);
+                    this.pinned.push(setPinned);
+                }
                 this._changeDetector.markForCheck();
             });
         }
