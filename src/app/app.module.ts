@@ -9,6 +9,7 @@ import { MatomoConfiguration, MatomoConsentMode, provideMatomo, withRouter } fro
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesListComponent } from './components/categories/list/categorieslist.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ImageComponent } from './elements/image/image.component';
@@ -46,6 +47,7 @@ function getMatomoSiteId(location: Location): string | number {
     declarations: [
         AppComponent,
         CategoriesComponent,
+        CategoriesListComponent,
         FooterComponent,
         HeaderComponent,
         ImageComponent,

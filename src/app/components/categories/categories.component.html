@@ -1,6 +1,4 @@
 <aside class="widget_categories">
     <h6 class="widget-title">Categorieën</h6>
-    <ul>
-        <li *ngFor="let category of categories$ | async" class="cat-item"><a href="javascript:;" [routerLink]="['']" [queryParams]="{category: category.id}" (click)="onClick(category)" rel="nofollow">{{category.name}}</a> ({{category.totalcount}})</li>
-    </ul>
+    <app-categories-list [tree]="categories$ | async"></app-categories-list>
 </aside>

@@ -1,0 +1,8 @@
+<ul>
+    <ng-container *ngFor="let category of tree">
+        <li *ngIf="category.totalcount" class="cat-item">
+            <a href="javascript:;" [routerLink]="['']" [queryParams]="{category: category.id}" (click)="onClick(category)" rel="nofollow">{{category.name}}</a> ({{category.totalcount}})
+            <app-categories-list *ngIf="category.children?.length" [tree]="category.children"></app-categories-list>
+        </li>
+    </ng-container>
+</ul>

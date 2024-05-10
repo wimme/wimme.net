@@ -23,10 +23,6 @@ export class CategoriesComponent implements OnInit {
         );
     }
 
-    public onClick(item: CategoriesTreeItem): void {
-        this._websiteService.closeSidebar();
-    }
-
     private _convertToTree(data: CategoryItem[]): CategoriesTreeItem[] {
         const categories: CategoriesTreeItem[] = [];
         const mapCategoriesPerParent: { [id: number]: CategoryItem[] } = {};
@@ -73,7 +69,7 @@ export class CategoriesComponent implements OnInit {
     }
 }
 
-class CategoriesTreeItem {
+export class CategoriesTreeItem {
     id: number;
     name: string;
     children?: CategoriesTreeItem[];
