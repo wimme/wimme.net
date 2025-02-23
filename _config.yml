@@ -89,7 +89,7 @@ matomo:
 #   - vendor/ruby/
 
 exclude: [README.md script .gitignore]
-keep_files: [robots.txt favicon.ico BingSiteAuth.xml googlef094e9a083a9b1fe.html tradetracker9d60cbc664982612.html]
+keep_files: [.htaccess robots.txt favicon.ico BingSiteAuth.xml googlef094e9a083a9b1fe.html tradetracker9d60cbc664982612.html]
 
 defaults:
   - scope:
