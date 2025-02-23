@@ -108,7 +108,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      permalink: /:slugified_categories/:title/
+      permalink: /:categories/:title/
   - scope:
       path: ""
     values:
