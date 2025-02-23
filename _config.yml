@@ -25,6 +25,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Alleen maar cool stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wimme.net" # the base hostname & protocol for your site, e.g. http://example.com
+locale: nl_BE
+lang: nl-BE
 social: # jekyll-seo-tag
   name: "Wim Bruynooghe"
   links:
