@@ -42,7 +42,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: website
-          path: _site/
+          path: |
+            _site/
+            _site/.htaccess
 
   # Deployment job
   deploy:
