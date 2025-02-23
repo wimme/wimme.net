@@ -54,7 +54,10 @@ jobs:
         id: deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.ftp_host }}
-          username: ${{ secrets.ftp_username }}
+          server: ${{ vars.ftp_host }}
+          username: ${{ vars.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: ${{ secrets.ftp_path }}
+          server-dir: ${{ vars.ftp_path }}
+          protocol: ftps
+          port: 21
+          dangerous-clean-slate: true
