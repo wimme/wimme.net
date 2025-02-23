@@ -45,6 +45,7 @@ wimme:
     - { platform: "Instagram", user_url: "https://www.instagram.com/wimmebr/" }
     - { platform: "LinkedIn", user_url: "https://linkedin.com/in/wimbruynooghe" }
     - { platform: "GitHub", user_url: "https://github.com/wimme" }
+  feed_url: "/feed/" # Allows using a feed publisher such as Feedburner
   preconnect_urls:
     - https://img.wimme.net
 
