@@ -88,6 +88,8 @@ matomo:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+include:
+  - .htaccess
 exclude:
   - README.md
   - script/
