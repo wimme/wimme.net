@@ -50,6 +50,8 @@ jobs:
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4.1.8
+        with:
+          path: website/
       - name: Deploy to FTP
         id: deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -60,4 +62,4 @@ jobs:
           server-dir: ${{ vars.ftp_path }}
           protocol: ftps
           port: 21
-          dangerous-clean-slate: true
+          local-dir: website/
