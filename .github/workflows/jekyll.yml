@@ -38,6 +38,12 @@ jobs:
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+      - name: Copy additional files
+        run: |
+          cp .htaccess _site/
+          cp BingSiteAuth.xml _site/
+          cp googlef094e9a083a9b1fe.html _site/
+          cp tradetracker9d60cbc664982612.html _site/
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
