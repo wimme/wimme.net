@@ -43,11 +43,11 @@ wimme:
     - disclaimer.md
     - privacy.md
   social_links:
-    - { platform: "Feed", user_url: "https://wimme.net/feed/" }
+    - { platform: "Feed", user_url: "https://wimme.net/feed.xml" }
     - { platform: "Instagram", user_url: "https://www.instagram.com/wimmebr/" }
     - { platform: "LinkedIn", user_url: "https://linkedin.com/in/wimbruynooghe" }
     - { platform: "GitHub", user_url: "https://github.com/wimme" }
-  feed_url: "/feed/" # Allows using a feed publisher such as Feedburner
+  feed_url: "/feed.xml" # Allows using a feed publisher such as Feedburner
   preconnect_urls:
     - https://img.wimme.net
 
@@ -91,12 +91,12 @@ matomo:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-include:
-  - .htaccess
 exclude:
   - README.md
   - script/
   - .gitignore
+  - googlef094e9a083a9b1fe.html
+  - tradetracker9d60cbc664982612.html
 keep_files:
   - .htaccess
   - robots.txt

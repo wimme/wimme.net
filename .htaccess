@@ -45,8 +45,10 @@ DirectoryIndex index.php index.html
 
   # Proxy to backend:
   RewriteRule ^system/(.*)$ https://cms.wimme.net/system/$1 [P]
-  RewriteRule ^feed/$ /feed.xml [P]
-  RewriteRule ^sitemap/$ /sitemap.xml [P]
+
+  # Redirect old urls:
+  RewriteRule ^feed/$ /feed.xml [R=301,L]
+  RewriteRule ^sitemap/$ /sitemap.xml [R=301,L]
 
   # Redirect requests from index.html to their parent folder
   RewriteRule ^index\.html$ / [R=301,L]

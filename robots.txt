@@ -25,4 +25,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://wimme.net/sitemap/
+Sitemap: https://wimme.net/sitemap.xml
