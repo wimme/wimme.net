@@ -94,6 +94,8 @@ matomo:
 exclude:
   - README.md
   - script/
+  - .vscode/
+  - .github/
   - .gitignore
   - googlef094e9a083a9b1fe.html
   - tradetracker9d60cbc664982612.html
