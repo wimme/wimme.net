@@ -10,6 +10,105 @@ Het bouwen van kwalitatieve webapplicaties is meer dan alleen "code die werkt". 
 
 In deze post duiken we dieper in hoe je softwarekwaliteit structureel kunt verhogen, met technieken zoals geautomatiseerd testen, quality gates en post mortems.
 
+### Testbare code schrijven & werken met TDD
+
+Een goede teststrategie begint niet bij het schrijven van tests - maar bij het schrijven van code die überhaupt testbaar is. Testbare code is eenvoudiger te begrijpen, te onderhouden en te automatiseren. Daarnaast opent het de deur naar technieken zoals Test-Driven Development (TDD).
+
+#### Wat maakt code testbaar?
+
+Testbare code voldoet aan een aantal ontwerpprincipes. Hieronder de belangrijkste kenmerken:
+
+##### 1. Rechtlijnige logica
+
+Vermijd diepe nesting, side effects en verborgen afhankelijkheden. Code moet voorspelbaar zijn, met een duidelijk begin en einde.
+
+Goed:
+
+```js
+function calculatePrice(items, discount) {
+  const subtotal = items.reduce((sum, item) => sum + item.price, 0);
+  return subtotal * (1 - discount);
+}
+```
+
+Slecht:
+
+```js
+function priceWithSurprises(items) {
+  if (!window.userLoggedIn) return 0;
+  // interne fetch call, logging side effects...
+}
+```
+
+##### 2. Modulair & korte methods/classes
+
+Splits code op in kleine, herbruikbare functies of klassen met een enkele verantwoordelijkheid (SRP: Single Responsibility Principle). Houd methods en classes kort en overzichtelijk, zodat ze makkelijk te begrijpen en te testen zijn.
+
+Beperk de lengte van methods; idealiter slechts enkele tientallen regels.
+
+Vermijd grote "god classes" die teveel taken combineren.
+
+Duidelijke scheiding van verantwoordelijkheden maakt testen eenvoudiger en onderhoud goedkoper.
+
+##### 3. Dependency injection
+
+Geef afhankelijkheden (zoals een API-client of database) mee via parameters, in plaats van ze binnenin te creëren.
+
+```js
+function fetchUser(apiClient, userId) {
+  return apiClient.get(`/users/${userId}`);
+}
+```
+
+```js
+function fetchUser(userId) {
+  const client = new ApiClient(); // moeilijk te mocken
+  return client.get(`/users/${userId}`);
+}
+```
+
+##### 4. Object-georiënteerd waar gepast
+
+Gebruik OOP om gedrag te bundelen met data. Door abstracties (interfaces, base classes) te gebruiken kan je gemakkelijk mocking en stubbing toepassen in tests.
+
+#### Test-Driven Development (TDD)
+
+TDD is een ontwikkeltechniek waarbij je eerst de test schrijft, dan de implementatie. Dit zorgt ervoor dat je enkel schrijft wat nodig is om je test te laten slagen - en dat je code automatisch testbaar wordt.
+
+Het klassieke TDD-cyclus verloopt in drie stappen:
+
+1. Schrijf een falende test.
+1. Schrijf net genoeg code om de test te laten slagen.
+1. Refactor - Verbeter de implementatie zonder de test te breken.
+
+Een voorbeeld (in pseudo-JavaScript):
+
+```js
+// Stap 1: schrijf test
+test('greet() geeft correcte groet terug', () => {
+  expect(greet('Marie')).toBe('Hallo Marie!');
+});
+
+// Stap 2: schrijf minimale code om test te laten slagen
+function greet(name) {
+  return 'Hallo ' + name + '!';
+}
+
+// Stap 3: eventueel refactoren of uitbreiden
+```
+
+Voordelen van TDD:
+
+* Je code blijft lean & focused
+* Edge cases worden vroeg ontdekt
+* Je bouwt automatisch een regressiesuite op
+* Code is van nature testbaar door ontwerp
+
+Nadelen:
+
+* Leercurve en mentale discipline nodig
+* Niet altijd even efficiënt voor UI-heavy werk of spike-ontwikkeling
+
 ### Teststrategieën: manueel en geautomatiseerd combineren
 
 Een sterke kwaliteitsbasis start bij een goed doordachte teststrategie bestaande uit meerdere lagen. Hier zijn de belangrijkste testtypes die je kan inzetten - zowel geautomatiseerd als manueel:
