@@ -115,7 +115,7 @@ source_limits:
 
 #### Gebruik standaard libraries
 
-Gebruik bij voorkeur standaard tracing tools/libraries zoals Jaeger, Zipkin en/of OpenTelemetry.
+Gebruik bij voorkeur standaard tracing tools/libraries zoals Jaeger, Zipkin (met OpenTelemetry).
 
 | Mijn concept   | OpenTelemetry concept          | Toepassing                               |
 | -------------- | ------------------------------ | ---------------------------------------- |
