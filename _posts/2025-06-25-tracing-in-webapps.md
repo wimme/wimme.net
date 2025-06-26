@@ -6,7 +6,7 @@ image:
 keywords: [tech,software,development,web,tracing]
 ---
 
-Het tracen van requests in moderne webapplicaties is essentieel voor debugging, monitoring en performantie-analyse. In deze blogpost bespreken we hoe je een eenvoudige maar krachtige tracing-structuur kunt opzetten van client-side webapps tot deep server logs, inclusief enkele best practices.
+Wanneer je web frontend bestaat uit talloze webapps, dashboards, scripts, enz (die gebruikers mogelijks zelf kunnen creëren), dan wordt het tracen van requests essentieel voor debugging, monitoring en performantie-analyse. In deze blogpost bespreken we hoe je een eenvoudige maar krachtige tracing-structuur kunt opzetten van client-side webapps tot deep server logs, inclusief enkele best practices.
 
 ### Waarom tracing?
 
@@ -43,6 +43,8 @@ Gebruik:
 #### `Request ID`
 
 Een **unieke identifier per request**, bijvoorbeeld een UUID. Dit ID blijft gedurende het hele pad van het request bestaan, ook binnen asynchrone of background-processen.
+
+Deze hoeft niet vanuit de client te worden verzonden, deze kan ook als eerste stap in de API op de server toegevoegd worden.
 
 Gebruik:
 
