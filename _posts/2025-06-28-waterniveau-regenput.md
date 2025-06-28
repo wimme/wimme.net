@@ -10,7 +10,7 @@ gallery:
       caption: "Bedradingsschema"
 ---
 
-Met het zeer droge voorjaar in 2025 zaten wij plots zonder regenwater. Dit gebeurd natuurlijk altijd op een slecht moment. Hoe handig zou het zijn om het waterniveau te kunnen meten? Door realtime inzicht te hebben in hoeveel water er nog beschikbaar is, kun je gerichter je regenwater gebruiken voor bijvoorbeeld de tuin, het toilet of de wasmachine. In deze blogpost ga ik over mijn oplossing om betrouwbaar het waterniveau te meten door middel van een druksensor en ESPHome.
+Met het zeer droge voorjaar in 2025 zaten wij plots zonder regenwater. Dit gebeurt natuurlijk altijd op een slecht moment. Hoe handig zou het zijn om het waterniveau te kunnen meten? Door realtime inzicht te hebben in hoeveel water er nog beschikbaar is, kun je gerichter je regenwater gebruiken voor bijvoorbeeld de tuin, het toilet of de wasmachine. In deze blogpost ga ik over mijn oplossing om betrouwbaar het waterniveau te meten door middel van een druksensor en ESPHome.
 
 ### Waarom het waterniveau meten?
 
