@@ -131,11 +131,15 @@ In elke kamer is er een KNX drukknop met ingebouwde temperatuurmeter. Deze waard
 {%- include image.html image=image -%}
 </div>
 
-### Zonwering en gordijnen
+#### Zonwering en gordijnen
 
 Mijn zonwering werkt draadloos met Somfy IO en mijn gordijnen met het draadloze Somfy RTS. Helaas is Somfy moeilijk te integreren. Een oplossing kan de Somfy TaHoma Switch zijn, maar deze kost 200 euro wat ik nogal prijzig vind voor wat het maar is. Een goedkoper alternatief is de Somfy Connectivity Kit, maar deze werkt enkel via een online cloud service, als Somfy beslist deze te stoppen dan werkt deze niet meer. Uiteindelijk gebruik ik [ESPSomfy-RTS](https://github.com/rstrouse/ESPSomfy-RTS) voor mijn RTS gordijnen.
 
 > Tip: voorzie bedrading aan de ramen voor zonwering en/of gordijnen. Bedrade zonwering en gordijnen zijn veel gemakkelijker te automatiseren dan draadloze varianten.
+
+#### Overige
+
+Voor het monitoren van het waterniveau in de regenput maak ik gebruik van ESPHome met een druksensor, zie [Meet het waterniveau van je regenput](/tech/smart%20home/waterniveau-regenput/).
 
 ### Tevredenheid
 
