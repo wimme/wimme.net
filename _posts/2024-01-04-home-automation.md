@@ -1,8 +1,7 @@
 ---
 title: "Starten met home automation"
 description: "Bij het (ver-)bouwen van een smart home woning komt heel wat kijken."
-categories:
-  - "Tech/Smart home"
+category: "Tech/Smart home"
 tags: [DIY]
 image: https://img.wimme.net/IMG_4672.HEIC.jpg
 gallery:

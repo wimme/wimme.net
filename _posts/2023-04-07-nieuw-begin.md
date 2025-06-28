@@ -1,7 +1,7 @@
 ---
 title: "Een nieuw begin"
 description: "Eindelijk! Er staat hier opnieuw een website online!"
-categories: "Tech/Web"
+category: "Tech/Web"
 image: https://img.wimme.net/pexels-pixabay-270360.jpg
 ---
 
