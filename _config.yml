@@ -122,3 +122,7 @@ defaults:
       path: "category"
     values:
       layout: "category"
+  - scope:
+      path: "tag"
+    values:
+      layout: "tag"
