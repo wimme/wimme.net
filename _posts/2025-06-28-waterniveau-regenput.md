@@ -2,6 +2,7 @@
 title: "Meet het waterniveau van je regenput"
 description: "Hoe nauwkeurig het waterniveau meten van een waterput"
 category: "Tech/Smart home"
+tag: "DIY"
 image: https://img.wimme.net/IMG_9119.HEIC.jpg
 keywords: [sensor,regenput,waterniveau,citerne,waterput,watertank,regenwater,druksensor,monitoring]
 gallery:
