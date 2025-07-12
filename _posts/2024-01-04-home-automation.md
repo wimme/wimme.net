@@ -80,15 +80,15 @@ Als drukknoppen zocht ik iets mooi en kwam ik uit op de Tastsensor 3 van Gira. D
   </tr>
   <tr>
     <td>KNX busaankoppeler:</td>
-    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
-    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
-    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520" rel="nofollow">Gira 200800</a></td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520" rel="nofollow">Gira 200800</a></td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520" rel="nofollow">Gira 200800</a></td>
   </tr>
   <tr>
     <td>Tastsensor:</td>
-    <td>[Gira 511100](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509630){:rel="nofollow"} Tastsensor 3 Basic 1-voudig</td>
-    <td>[Gira 513300](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509635){:rel="nofollow"} Tastsensor 3 Komfort 3-voudig (heeft ingebouwde temperatuurmeter)</td>
-    <td>[Gira 514500](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509639){:rel="nofollow"} Tastsensor 3 Plus 5-voudig (heeft ingebouwd LCD scherm met temperatuurmeter)</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509630" rel="nofollow">Gira 511100</a> Tastsensor 3 Basic 1-voudig</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509635" rel="nofollow">Gira 513300</a> Tastsensor 3 Komfort 3-voudig (heeft ingebouwde temperatuurmeter)</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509639" rel="nofollow">Gira 514500</a> Tastsensor 3 Plus 5-voudig (heeft ingebouwd LCD scherm met temperatuurmeter)</td>
   </tr>
   <tr>
     <td>Frame:</td>
@@ -104,7 +104,7 @@ Als drukknoppen zocht ik iets mooi en kwam ik uit op de Tastsensor 3 van Gira. D
   </tr>
 </table>
 
-Ondertussen is er reeds een nieuw model, de Tastsensor 4. Deze heeft geen afzonderlijke busaankoppeler nodig en is beschikbaar in 2 formaten (de 4.55 en de 4.95, waarbij de 4.55 past in alle System 55 frames, en de 4.95 een frameless design is).
+Ondertussen is er reeds een nieuw model, de Tastsensor 4. Deze heeft geen afzonderlijke busaankoppeler nodig en is beschikbaar in 2 formaten (de 4.55 en de 4.95, waarbij de 4.55 past in alle *Gira System 55* frames, en de 4.95 een frameless design is).
 
 <table>
   <tr>
@@ -115,15 +115,15 @@ Ondertussen is er reeds een nieuw model, de Tastsensor 4. Deze heeft geen afzond
   </tr>
   <tr>
     <td>Tastsensor:</td>
-    <td>[Gira 5001028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522046){:rel="nofollow"} Tastsensor 4.95 Komfort 1-voudig (heeft ingebouwde temperatuurmeter)</td>
-    <td>[Gira 5002028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522048){:rel="nofollow"} Tastsensor 4.95 Komfort 2-voudig (heeft ingebouwde temperatuurmeter)</td>
-    <td>[Gira 5004028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522050){:rel="nofollow"} Tastsensor 4.95 Komfort 4-voudig (heeft ingebouwde temperatuurmeter)</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522046" rel="nofollow">Gira 5001028</a> Tastsensor 4.95 Komfort 1-voudig anthracite (heeft ingebouwde temperatuurmeter)</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522048" rel="nofollow">Gira 5002028</a> Tastsensor 4.95 Komfort 2-voudig anthracite (heeft ingebouwde temperatuurmeter)</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522050" rel="nofollow">Gira 5004028</a> Tastsensor 4.95 Komfort 4-voudig anthracite (heeft ingebouwde temperatuurmeter)</td>
   </tr>
   <tr>
     <td>Rocker set:</td>
-    <td>[Gira 502117](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522054){:rel="nofollow"} 4.95 aluminium</td>
-    <td>[Gira 502217](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522064){:rel="nofollow"} 4.95 aluminium</td>
-    <td>[Gira 502417](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522074){:rel="nofollow"} 4.95 aluminium</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522054" rel="nofollow">Gira 502117</a> 4.95 aluminium</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522064" rel="nofollow">Gira 502217</a> 4.95 aluminium</td>
+    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522074" rel="nofollow">Gira 502417</a> 4.95 aluminium</td>
   </tr>
 </table>
 
