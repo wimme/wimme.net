@@ -14,7 +14,7 @@ gallery:
     - src: https://img.wimme.net/IMG_1344.jpeg
       caption: "3-voudige tastsensor van Gira"
     - src: https://img.wimme.net/IMG_1369.jpeg
-      caption: "Een bewegingsmelder"
+      caption: "Een bewegingsmelder van B.E.G."
   - images:
     - src: https://img.wimme.net/IMG_1347.jpeg
       caption: "De verwarming-verdeler met elektrische stelventielen"
@@ -59,17 +59,17 @@ Vervolgens kwam ik uit bij Loxone: voor 500 euro incl. BTW kocht ik een Loxone M
 
 #### KNX bus
 
-Voor de KNX bus is er een voeding nodig die stroom levert aan alle KNX apparaten aangesloten op de bus. Hiervoor gebruik ik de MDT STV-0320.01.
+Voor de KNX bus is er een voeding nodig die stroom levert aan alle KNX apparaten aangesloten op de bus. Hiervoor gebruik ik de [MDT STV-0320.02](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FN760016){:rel="nofollow"}.
 
 #### Verlichting
 
-Mijn woning is overal uitgerust met LED verlichting. Deze wordt geschakeld en gedimd via meerdere KNX actuators. Voor lichtkringen die gedimd kunnen worden gebruik ik de MDT AKD-0401.01 welke 4 kanalen heeft. De MDT AKK-0816.02 schakelt de lichtkringen aan en uit die niet gedimd worden.
+Mijn woning is overal uitgerust met LED verlichting. Deze wordt geschakeld en gedimd via meerdere KNX actuators. Voor lichtkringen die gedimd kunnen worden gebruik ik de [MDT AKD-0401.02](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FN760312){:rel="nofollow"} welke 4 kanalen heeft. De [MDT AKK-0816.03](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FN760269){:rel="nofollow"} schakelt de lichtkringen aan en uit die niet gedimd worden.
 
 De bediening gebeurt via drukknoppen of bewegingsmelders.
 
 ##### Drukknoppen
 
-Als drukknoppen zocht ik iets mooi en kwam ik uit op de Tastsensor 3 van Gira. Deze bestaat uit een busaankoppeler en de tastsensor, die vervolgens naar smaak kan afgewerkt worden met een frame en wippenset (ik koos voor de aluminium look). Er zijn heel wat combinaties mogelijk, enkele voorbeelden:
+Als drukknoppen zocht ik iets mooi en kwam ik uit op de Tastsensor 3 van Gira. Deze bestaat uit een busaankoppeler en de tastsensor, die vervolgens naar smaak kan afgewerkt worden met een frame en rocker set (ik koos voor de aluminium look). Er zijn heel wat combinaties mogelijk, enkele voorbeelden:
 
 <table>
   <tr>
@@ -80,33 +80,56 @@ Als drukknoppen zocht ik iets mooi en kwam ik uit op de Tastsensor 3 van Gira. D
   </tr>
   <tr>
     <td>KNX busaankoppeler:</td>
-    <td>Gira 200800</td>
-    <td>Gira 200800</td>
-    <td>Gira 200800</td>
+    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
+    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
+    <td>[Gira 200800](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509520){:rel="nofollow"}</td>
   </tr>
   <tr>
     <td>Tastsensor:</td>
-    <td>Gira 511100 Tastsensor 3 Basic 1-voudig</td>
-    <td>Gira 513300 Tastsensor 3 Komfort 3-voudig (heeft ingebouwde temperatuurmeter)</td>
-    <td>Gira 514500 Tastsensor 3 Plus 5-voudig (heeft ingebouwd LCD scherm met temperatuurmeter)</td>
+    <td>[Gira 511100](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509630){:rel="nofollow"} Tastsensor 3 Basic 1-voudig</td>
+    <td>[Gira 513300](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509635){:rel="nofollow"} Tastsensor 3 Komfort 3-voudig (heeft ingebouwde temperatuurmeter)</td>
+    <td>[Gira 514500](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6509639){:rel="nofollow"} Tastsensor 3 Plus 5-voudig (heeft ingebouwd LCD scherm met temperatuurmeter)</td>
   </tr>
   <tr>
     <td>Frame:</td>
-    <td>Gira 0211203 aluminium</td>
-    <td>Gira 0211203 aluminium</td>
-    <td>Gira 1002203 aluminium</td>
+    <td>Gira 0211203 E22 aluminium</td>
+    <td>Gira 0211203 E22 aluminium</td>
+    <td>Gira 1002203 E22 aluminium</td>
   </tr>
   <tr>
-    <td>Wippenset:</td>
-    <td>Gira 2131211 aluminium</td>
-    <td>Gira 2133211 aluminium</td>
-    <td>Gira 2145211 aluminium</td>
+    <td>Rocker set:</td>
+    <td>Gira 2131211 E22 aluminium</td>
+    <td>Gira 2133211 E22 aluminium</td>
+    <td>Gira 2145211 E22 aluminium</td>
+  </tr>
+</table>
+
+Ondertussen is er reeds een nieuw model, de Tastsensor 4. Deze heeft geen afzonderlijke busaankoppeler nodig en is beschikbaar in 2 formaten (de 4.55 en de 4.95, waarbij de 4.55 past in alle System 55 frames, en de 4.95 een frameless design is).
+
+<table>
+  <tr>
+    <th></th>
+    <th>Een 1-voudige tastsensor:</th>
+    <th>Een 2-voudige tastsensor:</th>
+    <th>Een 4-voudige tastsensor:</th>
+  </tr>
+  <tr>
+    <td>Tastsensor:</td>
+    <td>[Gira 5001028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522046){:rel="nofollow"} Tastsensor 4.95 Komfort 1-voudig (heeft ingebouwde temperatuurmeter)</td>
+    <td>[Gira 5002028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522048){:rel="nofollow"} Tastsensor 4.95 Komfort 2-voudig (heeft ingebouwde temperatuurmeter)</td>
+    <td>[Gira 5004028](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522050){:rel="nofollow"} Tastsensor 4.95 Komfort 4-voudig (heeft ingebouwde temperatuurmeter)</td>
+  </tr>
+  <tr>
+    <td>Rocker set:</td>
+    <td>[Gira 502117](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522054){:rel="nofollow"} 4.95 aluminium</td>
+    <td>[Gira 502217](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522064){:rel="nofollow"} 4.95 aluminium</td>
+    <td>[Gira 502417](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522074){:rel="nofollow"} 4.95 aluminium</td>
   </tr>
 </table>
 
 ##### Bewegingsmelder
 
-Als bewegingsmelder had ik lang zitten zoeken naar een model dat mooi in te bouwen is in het plafond. Uiteindelijk gebruik ik deze: B.E.G PD11-FLAT, is klein en valt amper op.
+Als bewegingsmelder had ik lang zitten zoeken naar een model dat mooi in te bouwen is in het plafond. Uiteindelijk gebruik ik deze: [B.E.G. PD11-KNXs-FLAT-ST](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6413761){:rel="nofollow"}, is klein en valt amper op.
 
 <div>
 {%- assign gallery = page.gallery[1] -%}
@@ -117,11 +140,11 @@ Als bewegingsmelder had ik lang zitten zoeken naar een model dat mooi in te bouw
 
 ##### LED strips
 
-LED strips aan het plafond zijn geplaatst in de *Corner* profiel van Paulmann. Dit profiel is overschilderbaar waardoor het mooi opgaat in het geheel. Ik gebruik RGBW LED strips op 24 V aangesloten op de RGBW DMX extensie van Loxone. Wellicht vervang ik deze ooit eens met addressable LED strips waarbij elke LED afzonderlijk kan worden aangestuurd, bijvoorbeeld met het leuke [WLED](https://kno.wled.ge/) project.
+LED strips aan het plafond zijn geplaatst in de *Corner* profiel van Paulmann. Dit profiel is overschilderbaar waardoor het mooi opgaat in het geheel. Ik gebruik RGBW LED strips op 24 V aangesloten op de RGBW DMX extensie van Loxone. Wellicht vervang ik deze ooit eens met adresseerbare LED strips waarbij elke LED afzonderlijk kan worden aangestuurd, bijvoorbeeld met het leuke [WLED](https://kno.wled.ge/) project.
 
 #### Verwarming
 
-In elke kamer is er een KNX drukknop met ingebouwde temperatuurmeter. Deze waarden worden op de KNX bus verstuurd en ingelezen door Loxone, welke met een "Intelligent Room Controller" bouwsteen per kamer de verwarming regelt door middel van elektrische stelventielen (via een KNX actuator, MDT AKH-0800.01 met 8 kanalen). Met behulp van de "Intelligent Temperature Controller" bouwsteen wordt de warmte-vraag van elke kamer samengeteld en vergeleken met de buitentempartuur om zo op een efficiënte manier de CV-brander en pomp aan te sturen.
+In elke kamer is er een KNX drukknop met ingebouwde temperatuurmeter. Deze waarden worden op de KNX bus verstuurd en ingelezen door Loxone, welke met een "Intelligent Room Controller" bouwsteen per kamer de verwarming regelt door middel van elektrische stelventielen (via een KNX actuator, [MDT AKH-0800.03](https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FN760094){:rel="nofollow"} met 8 kanalen). Met behulp van de "Intelligent Temperature Controller" bouwsteen wordt de warmte-vraag van elke kamer samengeteld en vergeleken met de buitentemperatuur om zo op een efficiënte manier de CV-brander aan te sturen.
 
 > Tip: Daar de verwarming volledig automatisch werkt, plaats sensors op de ramen om te vermijden dat de verwarming aanspringt terwijl een raam openstaat.
 
@@ -142,7 +165,7 @@ Voor het monitoren van het waterniveau in de regenput maak ik gebruik van ESPHom
 
 ### Tevredenheid
 
-Zowel van de drukknoppen als van de bewegingsmelders ben ik zeer tevreden, na 8 jaren in gebruik nooit iets van problemen mee gehad. Zelfde met de KNX-actuators van MDT.
+Zowel van de Gira-drukknoppen als van de B.E.G.-bewegingsmelders ben ik zeer tevreden, na 8 jaren in gebruik nooit iets van problemen mee gehad. Zelfde met de KNX-actuators van MDT.
 
 Echter heb ik minder animo met Loxone. Dit komt door de veel duurdere prijzen van een nieuwe Miniserver, het wegvallen van KNX in hun nieuwe Miniservers, en ook doordat er nog steeds gebruik gemaakt wordt van SD kaarten, welke na enkele jaren corrupt worden (ook de SD kaarten van Loxone zelf), en dan zit ik zonder verwarming/verlichting totdat er nieuwe SD kaart geprogrammeerd en ingestopt kan worden (tegenwoordig heb ik telkens een reserve klaarliggen voor het geval dit opnieuw gebeurd). Niet alle SD kaarten werken: courant verkrijgbare SD kaarten zijn te groot en worden niet ondersteund. Waarom maakt Loxone niet gebruik van meer betrouwbaar geheugen zoals NVMe? Verder werkt Loxone met amper iets samen, officiële ondersteuning voor Philips Hue of Apple HomeKit is er niet, welke maar enkele populaire voorbeelden zijn. Anderzijds blijft Loxone wel een prachtig systeem dat mooi ingebouwd zit in de zekeringskast, zonder te moeten gaan klooien met afzonderlijke Raspberry Pi's of PCs.
 
