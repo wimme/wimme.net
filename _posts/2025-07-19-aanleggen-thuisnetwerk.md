@@ -4,7 +4,7 @@ description: "Hoe je een degelijk thuisnetwerk aanlegt: van netwerkkast tot wifi
 category: "Tech"
 tag: "DIY"
 image: https://img.wimme.net/IMG_9656.HEIC.jpg
-keywords: [netwerk,ethernet,thuisnetwerk,netwerkkast,netwerkkabels,kabels,keystones,installeren,vermijden,interferentie]
+keywords: [netwerk,ethernet,thuisnetwerk,netwerkkast,netwerkkabels,kabels,keystones,wifi,AP,mesh,installeren,vermijden,interferentie]
 ---
 
 In een tijd waarin alles - van je thermostaat tot je televisie - verbonden is met internet, is een betrouwbaar en snel thuisnetwerk geen luxe meer, maar een must. Wifi is handig, maar wie het goed wil aanpakken, legt ook een bedraad netwerk aan.
@@ -81,6 +81,8 @@ Hieronder staat wat ik gebruik en tevreden over ben. Veel van mijn bedrade netwe
 
 * Een [netwerk set](https://www.amazon.com.be/-/nl/DIGITUS-Network-Tool-stripgereedschap-insteekgereedschap/dp/B00JG4UWQ8?crid=3MBLACUYKIYWQ&dib=eyJ2IjoiMSJ9.GHry4rBZ_cVhS4WZ6GW9wb7Q90Ci6UISp2ID5h69709WafKM3U5ZVA73kP4k5CP5D0RY0SKg7z2OUn175UpAMdMsiU9ZVMENzm-11mWe5C3HoFUCFZx1MIJX3i0b0GMqoRTpAjM5uq2FcvIXlBib44qicW2rFtI89aKWXQ0MVO9T0Aji9qEgUXEF4H5vZnNU4cG63-6GpuvHZvhARAD_7bcJomohOs9CAQvOE0AzyICtcVHHBqVlsiU7-9orQ8UBP5dqp8T8uLeP8_d-ETLSB-UOJQpJ3eoiBFwsT32criw.4tbeYIhlyMGoi2v16C21VHOJ_y5YuKP50wdjfhI0IoA&dib_tag=se&keywords=digitus+kit&qid=1752947528&sprefix=digitus+%2Caps%2C185&sr=8-1&linkCode=ll1&tag=wimme-21&linkId=57ecd5deb0ba2e1d31e187f253aa7616&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} bestaande uit een tester en krimptang komen zeker van pas bij het opzetten van een bedraad netwerk
 
+---
+
 ### Interferentie vermijden: afscherming & aarding
 
 #### Wat kan storing veroorzaken?
@@ -96,7 +98,9 @@ Hieronder staat wat ik gebruik en tevreden over ben. Veel van mijn bedrade netwe
 * Vermijd parallel lopen van netstroom en datakabels - kruisen mag, parallel liever niet
 * Gebruik geen kabels met aluminium geleiders (CCA)
 
-### Wifi in huis: mesh of access points?
+---
+
+### Goeie wifi in huis
 
 #### Vermijd:
 
@@ -106,10 +110,10 @@ Hieronder staat wat ik gebruik en tevreden over ben. Veel van mijn bedrade netwe
 
 #### Beter:
 
-* Gebruik wifi 6 access points met vaste ethernet aansluiting
+* Gebruik wifi 6 (of hoger) access points met vaste ethernet aansluiting
 * Plaats AP's aan plafond of hoog op muur, centraal in de ruimte - die stralen uit in de vorm van een paraplu
 * Gebruik PoE (Power over Ethernet) om access points te voeden via de netwerkkabel
-* Bij betonnen gewelven, plaats er minstens 1 per verdieping
+* Bij betonnen gewelven, plaats minstens 1 AP per verdieping
 
 Voorbeelden: [Ubiquiti UniFi](https://www.amazon.com.be/-/nl/Ubiquiti-UniFi-U6-Acceso-Inyector/dp/B0BYL7G7SZ?crid=1WO72N2UHX8SD&dib=eyJ2IjoiMSJ9.S_StUpFIKlUSI4dwnllROAUWjKhAUQzPcgWdMijYl5HBE9sA_q3zoNkT6w6i3hkK7ujNQdB281mmgA-nc92SUdWQbSXekk0wHBk2CPAF4lOHkKRWvaebtkTk-M9XmMrS1sGXuxYy9HsvvOs6IKGmT_Omo3TAmlWYuGjWwsRQcj9PxvtJ6-WsB5DXkj5hLsQiDmzpoq45Ym7Oqj2-8NwB1U3Sh1-NviCw0M4rerMVQDjRrEtRS0T_ehzrtaLGM1uE54DBDA9Fi9xWv5UBt6IVxkF14sYmgPMNIyTxeN4eFSY.LtPkFrd-T3oKYifBuE6RJ7m96c2WPt2hibP5Nv3y3eY&dib_tag=se&keywords=unifi+wifi+6&qid=1752948173&sprefix=unifi+wifi+6%2Caps%2C93&sr=8-2&linkCode=ll1&tag=wimme-21&linkId=930e3c393acab79d4f094249832598d5&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"}, TP-Link Omada, Netgear Insight, HPE Aruba Instant On
 
