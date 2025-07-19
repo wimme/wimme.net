@@ -121,9 +121,24 @@ Ondertussen is er reeds een nieuw model, de Tastsensor 4. Deze heeft geen afzond
   </tr>
   <tr>
     <td>Rocker set:</td>
-    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522054" rel="nofollow">Gira 502117</a> 4.95 aluminium</td>
-    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522064" rel="nofollow">Gira 502217</a> 4.95 aluminium</td>
-    <td><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522074" rel="nofollow">Gira 502417</a> 4.95 aluminium</td>
+    <td>
+      <ul>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522054" rel="nofollow">Gira 502117</a> 4.95 aluminium</li>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F687b7e4500184f422746ac1e040205db%2FProduct%2FView%2FNS6522053" rel="nofollow">Gira 5021126</a> 4.95 aluminium black</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522064" rel="nofollow">Gira 502217</a> 4.95 aluminium</li>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F687b7e4500184f422746ac1e040205db%2FProduct%2FView%2FNS6522168" rel="nofollow">Gira 5022126</a> 4.95 aluminium black</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F6872a6d1018760a42746ac1e0402066d%2FProduct%2FView%2FNS6522074" rel="nofollow">Gira 502417</a> 4.95 aluminium</li>
+        <li><a href="https://www.eibmarkt.com/tt/index.html?tt=2426_12_446673_&r=%2Fcgi-bin%2Feibmarkt.storefront%2F687b7e4500184f422746ac1e040205db%2FProduct%2FView%2FNS6522073" rel="nofollow">Gira 5024126</a> 4.95 aluminium black</li>
+      </ul>
+    </td>
   </tr>
 </table>
 
