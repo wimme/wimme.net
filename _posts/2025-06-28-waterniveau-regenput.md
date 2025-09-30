@@ -40,7 +40,7 @@ Er bestaan verschillende types sensoren die je kunt gebruiken om het waterniveau
 
 ##### Aanbevolen modellen: **TL-136** of **TL-231**
 
-Beide zijn 4–20mA druksensoren geschikt voor water en corrosieve omgevingen. De 4–20mA output bepaalt het waterniveau. Doordat de sensor een specifieke hoeveelheid elektrische stroom doorlaat, afhankelijk van het waterniveau, is dit storingsongevoelig, zelfs over lange kabels, want de hoeveel elektrische stroom blijft hetzelfde (voor een bepaald waterniveau) ongeacht de lengte van de kabel. Je kan dus perfect de kwetsbare ESP op een veilige plaats binnen plaatsen.
+Beide zijn 4-20mA druksensoren geschikt voor water en corrosieve omgevingen. De 4-20mA output bepaalt het waterniveau. Doordat de sensor een specifieke hoeveelheid elektrische stroom doorlaat, afhankelijk van het waterniveau, is dit storingsongevoelig, zelfs over lange kabels, want de hoeveel elektrische stroom blijft hetzelfde (voor een bepaald waterniveau) ongeacht de lengte van de kabel. Je kan dus perfect de kwetsbare ESP op een veilige plaats binnen plaatsen.
 
 De keuze tussen TL-136 of TL-231 hangt vooral af van beschikbaarheid en het gewenste meetbereik. Neem een sensor met een bereik die overeenstemt met de diepte van jouw waterput. Neem geen sensor die tot veel dieper meet dan nodig, want dan worden de metingen minder nauwkeurig, de 4-20mA output blijft namelijk hetzelfde waarvan je dan maar een klein deel gebruikt.
 
@@ -65,9 +65,11 @@ Om aan de slag te gaan heb je het volgende nodig:
 - 1x ESP32 of ESP8266 - zelf maak ik gebruik van Olimex ESP32-POE-ISO want deze heeft een bedrade netwerkverbinding en ondersteund Power-over-Ethernet (PoE) met galvanische scheiding, hierdoor kan ook de sensor veilig gevoed worden via de netwerkverbinding en zijn er geen afzonderlijk stopcontacten en stroomadapters nodig
 - 1x [TL-136 of TL-231 4–20mA druksensor](https://www.amazon.com.be/-/nl/Waterniveausensor-vloeistofniveau-signaaluitgang-waterniveausensor-stroomschakelaar/dp/B0C4YN7S89?crid=3C132C69974SY&dib=eyJ2IjoiMSJ9.Jj4qTFJ0BSRx5xhVXfk4kJ0rRPybJws9MfCtqueHTneBH0Q-BK9Xs2Df_NeoZOKV72qkodtbWyXOcSHb_kTjtm_JGgh7ZBh9A4NV4zp3I-3pt67fK0bSuc5wTqqSsnG4hbNBjLnp6En_RIsMibW8mZ53KfdJ2w7VS2xmlesebO3SJ20tsGV3EO8-Kan9sw_HO1Nwsmqu9_i9BRcByasUvvIWsN698p1BCrhpM3PQzAhZH-mwG6llye8-SEElq_JNZder-PMFIQArDA9cpMyvobs_1cOCzqoRul0emuvKUxU.fZHxZWBe4cI55nZebJdmUxm0el2RLiUPXw8p9Xp1GgI&dib_tag=se&keywords=tl136&qid=1750531203&s=electronics&sprefix=tl%2B136%2Celectronics%2C135&sr=1-1-catcorr&th=1&linkCode=ll1&tag=wimme-21&linkId=b477aec4357bdb23867651226b07bc3b&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} met het vereiste max waterniveau
 - 1x [Step-up (boost) converter type XL6009 of LM2596](https://www.amazon.com.be/-/nl/dp/B00HV59922?&linkCode=ll1&tag=wimme-21&linkId=b4e9307a8b2238a92f1d81edfc2dfd4c&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} - zet de 5V afkomstig van de ESP om naar 24V voor de sensor
-- 1x [4-20mA transducer](https://www.amazon.com.be/-/nl/dp/B09NRSQ3G3?&linkCode=ll1&tag=wimme-21&linkId=09d1a081a6d58e2a09eb6cbb790a43ad&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} - zet de stroom van de sensor om in spanning (hiervoor kan ook een simepele weerstand gebruikt worden, maar de transducer is wel handig om wat te kunnen bijregelen)
+- 1x [4-20mA transducer](https://www.amazon.com.be/-/nl/dp/B09NRSQ3G3?&linkCode=ll1&tag=wimme-21&linkId=09d1a081a6d58e2a09eb6cbb790a43ad&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} - zet de stroom van de sensor om in spanning (hiervoor kan ook een simpele weerstand gebruikt worden, maar de transducer is wel handig om wat te kunnen bijregelen)
 - 1x [ADS1115 ADC](https://www.amazon.com.be/-/nl/dp/B07PXFD3BH?th=1&linkCode=ll1&tag=wimme-21&linkId=23e5a385354502b646ba47209c22eaf1&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} - zet de analoge spanning om naar een digitale waarde welke via een I²C bus doorgestuurd wordt naar de ESP (deze heeft 4 ingangen dus er zijn nog 3 ingangen beschikbaar)
 - Schroefklemmen / verbindingsmateriaal
+
+Indien je het waterniveau van meerdere waterputten wilt monitoren dan heb je per waterput enkel nog een druksensor en 4-20mA transducer nodig. De ADS1115 heeft 4 ingangen, dus je kan er tot 4 waterputten op aansluiten.
 
 ### Bedradingsschema
 
@@ -78,13 +80,17 @@ Om aan de slag te gaan heb je het volgende nodig:
 
 De ADS1115 analoog-digitaal converter is verbonden met de ESP via de I²C bus. De uitgang van de 4-20mA transducer is verbonden met een ingang (A0 in mijn geval) van de ADS1115.
 
+Bij meerdere waterputten kun je per put een eigen druksensor en 4-20mA transducer aansluiten op een vrije ingang van de ADS1115 (A1, A2, A3).
+
 ### Installatie
 
 Met de trimmer "Zero" stel je de uitgangsspanning van de transducer af op 0V wanneer de sensor boven water is. Wanneer je de sensor tot maximale diepte laat onderdompelen, stel dan met de trimmer "Span" de uitgangsspanning af op 3.3V. Dit valt te simuleren door gebruik te maken van een buis van de volledige lengte, gevuld met water. De druk zal hetzelfde zijn als in een grote regenput (wet van Archimedes).
 
 ### Configuratie in ESPHome
 
-Hieronder is mijn configuratie. Je zal deze wat moeten aanpassen (bvb de hoogte van de regenput en de range van je druksensor). De berekening gaat uit van een lineair verloop (regenput in de vorm van een cylinder of rechthoek), heeft je regenput grote afrondingen over de hoogte waardoor het waterniveau niet lineair stijgt dan zal je een extra filter (calibrate_linear) moeten toevoegen aan de configuratie om een exact resultaat te bekomen.
+Hieronder is mijn configuratie. Je zal deze wat moeten aanpassen (bvb de hoogte van de regenput en de range van je druksensor). De berekening gaat uit van een lineair verloop (regenput in de vorm van een cilinder of rechthoek), heeft je regenput grote afrondingen over de hoogte waardoor het waterniveau niet lineair stijgt dan zal je een extra filter (calibrate_linear) moeten toevoegen aan de configuratie om een exact resultaat te bekomen.
+
+Bij meerdere waterputten dupliceer je in onderstaande configuratie de sensoren voor elke waterput, waarbij je de multiplexer (bijvoorbeeld 'A1_GND', 'A2_GND', 'A3_GND') en de id's aanpast zodat elke sensor een unieke naam en identificatie krijgt. Zo kun je het waterniveau van meerdere putten afzonderlijk monitoren.
 
 ```yaml
 esphome:
