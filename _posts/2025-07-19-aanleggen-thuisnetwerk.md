@@ -3,7 +3,7 @@ title: Thuis een netwerk aanleggen
 description: "Hoe je een degelijk thuisnetwerk aanlegt: van netwerkkast tot wifi, inclusief tips, materialen en wat je zeker moet vermijden."
 category: "Tech"
 tag: "DIY"
-image: https://img.wimme.net/IMG_9656.HEIC.jpg
+image: https://img.wimme.net/IMG_1805_1.HEIC.jpg
 keywords: [netwerk,ethernet,thuisnetwerk,netwerkkast,netwerkkabels,kabels,keystones,wifi,AP,mesh,installeren,vermijden,interferentie]
 ---
 
