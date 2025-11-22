@@ -42,6 +42,7 @@ wimme:
   footer_nav:
     - disclaimer.md
     - privacy.md
+  toc_title: 'Inhoud'
   social_links:
     - { platform: "Feed", user_url: "https://wimme.net/feed.xml" }
     - { platform: "Instagram", user_url: "https://www.instagram.com/wimmebr/" }
