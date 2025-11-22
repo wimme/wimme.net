@@ -27,6 +27,7 @@ Voor je kabels begint te trekken: maak een plattegrond van je woning en bepaal p
 * Waar komt de netwerkkast? (idealiter centraal in de technische ruimte of garage)
 
 Houd bij het ontwerp rekening met:
+
 * Toekomstige uitbreidingen (zoals een wifi-access point buiten)
 * Back-up stroomvoorziening (UPS)
 * Beperkte wifi-dekking van één modem/router (daarom in plaats hiervan is het beter afzonderlijke mesh access points te plaatsen)
@@ -79,7 +80,7 @@ Hieronder staat wat ik gebruik en tevreden over ben. Veel van mijn bedrade netwe
 
 #### Tools
 
-* Een [netwerk set](https://www.amazon.com.be/-/nl/DIGITUS-Network-Tool-stripgereedschap-insteekgereedschap/dp/B00JG4UWQ8?crid=3MBLACUYKIYWQ&dib=eyJ2IjoiMSJ9.GHry4rBZ_cVhS4WZ6GW9wb7Q90Ci6UISp2ID5h69709WafKM3U5ZVA73kP4k5CP5D0RY0SKg7z2OUn175UpAMdMsiU9ZVMENzm-11mWe5C3HoFUCFZx1MIJX3i0b0GMqoRTpAjM5uq2FcvIXlBib44qicW2rFtI89aKWXQ0MVO9T0Aji9qEgUXEF4H5vZnNU4cG63-6GpuvHZvhARAD_7bcJomohOs9CAQvOE0AzyICtcVHHBqVlsiU7-9orQ8UBP5dqp8T8uLeP8_d-ETLSB-UOJQpJ3eoiBFwsT32criw.4tbeYIhlyMGoi2v16C21VHOJ_y5YuKP50wdjfhI0IoA&dib_tag=se&keywords=digitus+kit&qid=1752947528&sprefix=digitus+%2Caps%2C185&sr=8-1&linkCode=ll1&tag=wimme-21&linkId=57ecd5deb0ba2e1d31e187f253aa7616&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} bestaande uit een tester en krimptang komen zeker van pas bij het opzetten van een bedraad netwerk
+* Een [netwerk set](https://www.amazon.com.be/-/nl/DIGITUS-Network-Tool-stripgereedschap-insteekgereedschap/dp/B00JG4UWQ8?&linkCode=ll1&tag=wimme-21&linkId=f2baa1de6c7f43c12675c51060f29120&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} bestaande uit een tester en krimptang komen zeker van pas bij het opzetten van een bedraad netwerk
 
 ---
 
@@ -102,20 +103,22 @@ Hieronder staat wat ik gebruik en tevreden over ben. Veel van mijn bedrade netwe
 
 ### Goeie wifi in huis
 
-#### Vermijd:
+Vermijd:
 
 * Wifi-pods (mesh via wifi) - bandbreedte halveert bij elke hop en verhoogt latency
 * Powerline-adapters - gevoelig voor storing, vaak instabiel
 * Wifi-repeaters - verhogen latency en verlagen snelheid
 
-#### Beter:
+Beter:
 
 * Gebruik wifi 6 (of hoger) access points met vaste ethernet aansluiting
 * Plaats AP's aan plafond of hoog op muur, centraal in de ruimte - die stralen uit in de vorm van een paraplu
 * Gebruik PoE (Power over Ethernet) om access points te voeden via de netwerkkabel
 * Bij betonnen gewelven, plaats minstens 1 AP per verdieping
 
-Voorbeelden: [Ubiquiti UniFi](https://www.amazon.com.be/-/nl/Ubiquiti-UniFi-U6-Acceso-Inyector/dp/B0BYL7G7SZ?crid=1WO72N2UHX8SD&dib=eyJ2IjoiMSJ9.S_StUpFIKlUSI4dwnllROAUWjKhAUQzPcgWdMijYl5HBE9sA_q3zoNkT6w6i3hkK7ujNQdB281mmgA-nc92SUdWQbSXekk0wHBk2CPAF4lOHkKRWvaebtkTk-M9XmMrS1sGXuxYy9HsvvOs6IKGmT_Omo3TAmlWYuGjWwsRQcj9PxvtJ6-WsB5DXkj5hLsQiDmzpoq45Ym7Oqj2-8NwB1U3Sh1-NviCw0M4rerMVQDjRrEtRS0T_ehzrtaLGM1uE54DBDA9Fi9xWv5UBt6IVxkF14sYmgPMNIyTxeN4eFSY.LtPkFrd-T3oKYifBuE6RJ7m96c2WPt2hibP5Nv3y3eY&dib_tag=se&keywords=unifi+wifi+6&qid=1752948173&sprefix=unifi+wifi+6%2Caps%2C93&sr=8-2&linkCode=ll1&tag=wimme-21&linkId=930e3c393acab79d4f094249832598d5&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"}, TP-Link Omada, Netgear Insight, HPE Aruba Instant On
+Voorbeelden: [Ubiquiti UniFi](https://www.amazon.com.be/-/nl/Ubiquiti-UniFi-U6-Acceso-Inyector/dp/B0BYL7G7SZ?&linkCode=ll1&tag=wimme-21&linkId=654d859656e910f2b1c46f8de64d031f&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"}, TP-Link Omada, Netgear Insight, HPE Aruba Instant On
+
+Bij gebruik van meerdere Ubiquiti UniFi APs is ook een controller nodig zodat de APs optimaal met elkaar samenwerken (en niet elkaar storen door op dezelfde frequentie te werken). Een aanrader hierbij is de [Ubiquiti Cloud Gateway](https://www.amazon.com.be/-/nl/OLKIEQZ-Ubiquiti-Cloud-Gateway-UCG-Ultra/dp/B0CWLKD9RP?&linkCode=ll1&tag=wimme-21&linkId=cfe81943e6cd845772d677790f893512&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} router.
 
 ### Tot slot
 
