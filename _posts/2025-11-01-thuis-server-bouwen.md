@@ -64,6 +64,10 @@ In deze cases past een FlexATX voeding, hiervoor gebruik ik de [Inter-Tech GF-35
 {%- include gallery.html gallery=gallery -%}
 </div>
 
+#### Kant en klare oplossing
+
+Wil je liever geen behuizing, moederbord, voeding en geheugen afzonderlijk kopen en alles zelf in elkaar zetten? Dan is de [Ugreen NASync DXP2800](https://www.amazon.com.be/-/en/DXP2800-Desktop-Quad-Core-Processor-Network/dp/B0D2K9J5TY?th=1&linkCode=ll1&tag=wimme-21&linkId=99718244255b03992ac79feb3db4480a&language=nl_BE&ref_=as_li_ss_tl){:rel="nofollow"} misschien iets voor jou. Dit apparaat maakt gebruik van dezelfde energiezuinige Intel N100-processor en laat je bovendien vrij om zelf te kiezen welke software je erop installeert.
+
 ### Softwarekeuze
 
 De keuze van je basis-OS bepaalt grotendeels de flexibiliteit en het beheer van je home server.
